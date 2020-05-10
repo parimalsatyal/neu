@@ -1,8 +1,8 @@
 html {
 	font-size: 110%;
 	background: white;
-	/* background-image: url("../img/animspace.gif"); */
-	background: white;
+	background-image: url("../img/animspace.gif");
+	/* background: white; */
 }
 
 body {
@@ -11,8 +11,6 @@ body {
 	font-family: 'Barlow', serif;
 	font-size: 1.05rem;
 	margin: 0.2rem;
-	background: cornsilk;
-	box-shadow: 0 0 0 5px MidnightBlue inset; */
 }
 
 body a:link {
@@ -31,6 +29,8 @@ body a:hover {
 #wrapper {
   max-width: 630px;
   padding: 80px 7% 80px 7%;
+	background: cornsilk;
+	box-shadow: 0 0 0 5px MidnightBlue inset; */
 }
 
 header {
@@ -89,7 +89,7 @@ ul li {
 	margin-left: -0.1rem;
 }
 
-ul#songs, ul#essays {
+ul#songs, ul#essays, ul#activities {
 	list-style-type: none;
 	margin-top: 1.5rem;
 }
@@ -99,7 +99,7 @@ ul#songs li img {
 	margin-left: -1.8rem;
 }
 
-ul#essays li img {
+ul#essays li img, ul#activities li img {
 	position: absolute;
 	margin-left: -1.6rem;
 	margin-top: 0.2rem;
