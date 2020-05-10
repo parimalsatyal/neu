@@ -1,20 +1,23 @@
 html {
 	font-size: 110%;
 	background: white;
+	/* background-image: url("../img/animspace.gif"); */
+	background: white;
 }
 
 body {
 	color: MidnightBlue;
-	background: cornsilk;
-	box-shadow: 0 0 0 5px MidnightBlue inset;
 	min-height: 100%; min-height: 100vh;
 	font-family: 'Barlow', serif;
 	font-size: 1.05rem;
 	margin: 0.2rem;
+	background: cornsilk;
+	box-shadow: 0 0 0 5px MidnightBlue inset; */
 }
 
 body a:link {
 	color: DarkBlue;
+	font-weight: 500;
 }
 
 body a:visited {
@@ -98,7 +101,7 @@ ul#songs li img {
 
 ul#essays li img {
 	position: absolute;
-	margin-left: -1.5rem;
+	margin-left: -1.6rem;
 	margin-top: 0.2rem;
 }
 
@@ -133,8 +136,8 @@ article img {
 }
 
 article figure {
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	max-width: 100%;
+	margin: 2rem 0;
 }
 
 article figcaption {
