@@ -49,11 +49,13 @@ header {
 
 h1 {
 	font-size: 2.2rem;
+	font-weight: 600;
 }
 
 h2 {
   font-size: 1.5rem;
 	margin-top: 3rem;
+	font-weight: 600;
 }
 
 p {
@@ -77,7 +79,6 @@ ul li {
 
 .meta {
 	font-size: 1rem;
-	font-weight: 100;
 	color: SlateGrey;
 }
 
@@ -92,6 +93,10 @@ blockquote {
 	margin-top: 2rem;
 	margin-bottom: 2rem;
 	font-size: 1.05rem;;
+}
+
+strong {
+	font-weight: 500;
 }
 
 article img {
@@ -116,19 +121,6 @@ article figcaption a:link, article figcaption a:visited, article figcaption a:ho
 	margin-left: -1.3rem;
 }
 
-/* barlow-300 - latin */
-@font-face {
-  font-family: 'Barlow';
-  font-style: normal;
-  font-weight: 300;
-  src: url('../fonts/barlow-v4-latin-300.eot'); /* IE9 Compat Modes */
-  src: local('Barlow Light'), local('Barlow-Light'),
-       url('../fonts/barlow-v4-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/barlow-v4-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/barlow-v4-latin-300.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/barlow-v4-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/barlow-v4-latin-300.svg#Barlow') format('svg'); /* Legacy iOS */
-}
 
 /* barlow-regular - latin */
 @font-face {
@@ -212,20 +204,6 @@ article figcaption a:link, article figcaption a:visited, article figcaption a:ho
        url('../fonts/eb-garamond-v13-latin-regular.woff') format('woff'), /* Modern Browsers */
        url('../fonts/eb-garamond-v13-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
        url('../fonts/eb-garamond-v13-latin-regular.svg#EBGaramond') format('svg'); /* Legacy iOS */
-}
-
-/* eb-garamond-600 - latin */
-@font-face {
-  font-family: 'EB Garamond';
-  font-style: normal;
-  font-weight: 600;
-  src: url('../fonts/eb-garamond-v13-latin-600.eot'); /* IE9 Compat Modes */
-  src: local(''),
-       url('../fonts/eb-garamond-v13-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/eb-garamond-v13-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/eb-garamond-v13-latin-600.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/eb-garamond-v13-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/eb-garamond-v13-latin-600.svg#EBGaramond') format('svg'); /* Legacy iOS */
 }
 
 /* eb-garamond-italic - latin */
