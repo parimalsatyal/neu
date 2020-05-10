@@ -81,6 +81,27 @@ ul li {
 	padding: 0;
 }
 
+#writing img {
+	margin-bottom: -0.5rem;
+	margin-left: -0.1rem;
+}
+
+ul#songs, ul#essays {
+	list-style-type: none;
+	margin-top: 1.5rem;
+}
+
+ul#songs li img {
+	position: absolute;
+	margin-left: -1.8rem;
+}
+
+ul#essays li img {
+	position: absolute;
+	margin-left: -1.5rem;
+	margin-top: 0.2rem;
+}
+
 .meta {
 	font-size: 1rem;
 	color: SlateGrey;
