@@ -58,6 +58,10 @@ h2 {
 	font-weight: 600;
 }
 
+h2 img {
+
+}
+
 p {
 	line-height: 1.5rem;
 }
@@ -82,8 +86,12 @@ ul li {
 	color: SlateGrey;
 }
 
-.author-date, .author-date a:link, .author-date a:visited {
+.info {
 	font-size: 1rem;
+	color: SlateGrey;
+}
+
+.info a:link, .info a:visited {
 	color: SlateGrey;
 }
 
@@ -121,6 +129,20 @@ article figcaption a:link, article figcaption a:visited, article figcaption a:ho
 	margin-left: -1.3rem;
 }
 
+ul.about-this-site {
+	list-style-type: none;
+	font-size: 0.9rem;
+}
+
+ul.about-this-site li {
+	margin-top: 0.4rem;
+}
+
+ul.about-this-site li img {
+	position: absolute;
+	margin-left: -1.6rem;
+	margin-top: 0.1rem;
+}
 
 /* barlow-regular - latin */
 @font-face {
