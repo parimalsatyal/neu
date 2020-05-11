@@ -28,7 +28,7 @@ body a:hover, #songs a:hover, #essays a:hover, #activities a:hover  {
 
 #wrapper {
   max-width: 630px;
-  padding: 80px 7% 80px 7%;
+  padding: 80px 7% 50px 7%;
 	background: cornsilk;
 	box-shadow: 0 0 0 5px MidnightBlue inset; */
 }
