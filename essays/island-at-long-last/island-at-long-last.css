@@ -1,5 +1,9 @@
 html {
-	background: black;
-	background-image: url("starbackground.gif");
+	background: DarkTurquoise;
+	background-image: url("maggie_bg_oceanbubbles");
 	background-repeat: repeat-all;
+}
+
+#wrapper {
+
 }
