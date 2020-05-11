@@ -1,114 +1,35 @@
-[ Copyleft Attitude ]
+Creative Commons Legal Code
+CC0 1.0 Universal
+Official translations of this legal tool are available
 
-Free Art License 1.3 (FAL 1.3)
+    CREATIVE COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE LEGAL SERVICES. DISTRIBUTION OF THIS DOCUMENT DOES NOT CREATE AN ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS PROVIDES THIS INFORMATION ON AN "AS-IS" BASIS. CREATIVE COMMONS MAKES NO WARRANTIES REGARDING THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS PROVIDED HEREUNDER, AND DISCLAIMS LIABILITY FOR DAMAGES RESULTING FROM THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS PROVIDED HEREUNDER. 
 
-Preamble
+Statement of Purpose
 
-The Free Art License grants the right to freely copy, distribute, and transform creative works without infringing the author’s rights.
+The laws of most jurisdictions throughout the world automatically confer exclusive Copyright and Related Rights (defined below) upon the creator and subsequent owner(s) (each and all, an "owner") of an original work of authorship and/or a database (each, a "Work").
 
-The Free Art License recognizes and protects these rights. Their implementation has been reformulated in order to allow everyone to use creations of the human mind in a creative manner, regardless of their types and ways of expression.
+Certain owners wish to permanently relinquish those rights to a Work for the purpose of contributing to a commons of creative, cultural and scientific works ("Commons") that the public can reliably and without fear of later claims of infringement build upon, modify, incorporate in other works, reuse and redistribute as freely as possible in any form whatsoever and for any purposes, including without limitation commercial purposes. These owners may contribute to the Commons to promote the ideal of a free culture and the further production of creative, cultural and scientific works, or to gain reputation or greater distribution for their Work in part through the use and efforts of others.
 
-While the public’s access to creations of the human mind usually is restricted by the implementation of copyright law, it is favoured by the Free Art License. This license intends to allow the use of a work’s resources; to establish new conditions for creating in order to increase creation opportunities. The Free Art License grants the right to use a work, and acknowledges the right holder’s and the user’s rights and responsibility.
+For these and/or other purposes and motivations, and without any expectation of additional consideration or compensation, the person associating CC0 with a Work (the "Affirmer"), to the extent that he or she is an owner of Copyright and Related Rights in the Work, voluntarily elects to apply CC0 to the Work and publicly distribute the Work under its terms, with knowledge of his or her Copyright and Related Rights in the Work and the meaning and intended legal effect of CC0 on those rights.
 
-The invention and development of digital technologies, Internet and Free Software have changed creation methods: creations of the human mind can obviously be distributed, exchanged, and transformed. They allow to produce common works to which everyone can contribute to the benefit of all.
+1. Copyright and Related Rights. A Work made available under CC0 may be protected by copyright and related or neighboring rights ("Copyright and Related Rights"). Copyright and Related Rights include, but are not limited to, the following:
 
-The main rationale for this Free Art License is to promote and protect these creations of the human mind according to the principles of copyleft: freedom to use, copy, distribute, transform, and prohibition of exclusive appropriation.
+    the right to reproduce, adapt, distribute, perform, display, communicate, and translate a Work;
+    moral rights retained by the original author(s) and/or performer(s);
+    publicity and privacy rights pertaining to a person's image or likeness depicted in a Work;
+    rights protecting against unfair competition in regards to a Work, subject to the limitations in paragraph 4(a), below;
+    rights protecting the extraction, dissemination, use and reuse of data in a Work;
+    database rights (such as those arising under Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, and under any national implementation thereof, including any amended or successor version of such directive); and
+    other similar, equivalent or corresponding rights throughout the world based on applicable law or treaty, and any national implementations thereof.
 
-Definitions
+2. Waiver. To the greatest extent permitted by, but not in contravention of, applicable law, Affirmer hereby overtly, fully, permanently, irrevocably and unconditionally waives, abandons, and surrenders all of Affirmer's Copyright and Related Rights and associated claims and causes of action, whether now known or unknown (including existing as well as future claims and causes of action), in the Work (i) in all territories worldwide, (ii) for the maximum duration provided by applicable law or treaty (including future time extensions), (iii) in any current or future medium and for any number of copies, and (iv) for any purpose whatsoever, including without limitation commercial, advertising or promotional purposes (the "Waiver"). Affirmer makes the Waiver for the benefit of each member of the public at large and to the detriment of Affirmer's heirs and successors, fully intending that such Waiver shall not be subject to revocation, rescission, cancellation, termination, or any other legal or equitable action to disrupt the quiet enjoyment of the Work by the public as contemplated by Affirmer's express Statement of Purpose.
 
-« work » either means the initial work, the subsequent works or the common work as defined hereafter:
+3. Public License Fallback. Should any part of the Waiver for any reason be judged legally invalid or ineffective under applicable law, then the Waiver shall be preserved to the maximum extent permitted taking into account Affirmer's express Statement of Purpose. In addition, to the extent the Waiver is so judged Affirmer hereby grants to each affected person a royalty-free, non transferable, non sublicensable, non exclusive, irrevocable and unconditional license to exercise Affirmer's Copyright and Related Rights in the Work (i) in all territories worldwide, (ii) for the maximum duration provided by applicable law or treaty (including future time extensions), (iii) in any current or future medium and for any number of copies, and (iv) for any purpose whatsoever, including without limitation commercial, advertising or promotional purposes (the "License"). The License shall be deemed effective as of the date CC0 was applied by Affirmer to the Work. Should any part of the License for any reason be judged legally invalid or ineffective under applicable law, such partial invalidity or ineffectiveness shall not invalidate the remainder of the License, and in such case Affirmer hereby affirms that he or she will not (i) exercise any of his or her remaining Copyright and Related Rights in the Work or (ii) assert any associated claims and causes of action with respect to the Work, in either case contrary to Affirmer's express Statement of Purpose.
 
-« common work » means a work composed of the initial work and all subsequent contributions to it (originals and copies). The initial author is the one who, by choosing this license, defines the conditions under which contributions are made.
+4. Limitations and Disclaimers.
 
-« Initial work » means the work created by the initiator of the common work (as defined above), the copies of which can be modified by whoever wants to
+    No trademark or patent rights held by Affirmer are waived, abandoned, surrendered, licensed or otherwise affected by this document.
+    Affirmer offers the Work as-is and makes no representations or warranties of any kind concerning the Work, express, implied, statutory or otherwise, including without limitation warranties of title, merchantability, fitness for a particular purpose, non infringement, or the absence of latent or other defects, accuracy, or the present or absence of errors, whether or not discoverable, all to the greatest extent permissible under applicable law.
+    Affirmer disclaims responsibility for clearing rights of other persons that may apply to the Work or any use thereof, including without limitation any person's Copyright and Related Rights in the Work. Further, Affirmer disclaims responsibility for obtaining any necessary consents, permissions or other rights required for any use of the Work.
+    Affirmer understands and acknowledges that Creative Commons is not a party to this document and has no duty or obligation with respect to this CC0 or use of the Work.
 
-« Subsequent works » means the contributions made by authors who participate in the evolution of the common work by exercising the rights to reproduce, distribute, and modify that are granted by the license.
-
-« Originals » (sources or resources of the work) means all copies of either the initial work or any subsequent work mentioning a date and used by their author(s) as references for any subsequent updates, interpretations, copies or reproductions.
-
-« Copy » means any reproduction of an original as defined by this license.
-
-1. OBJECT
-The aim of this license is to define the conditions under which one can use this work freely.
-
-2. SCOPE
-This work is subject to copyright law. Through this license its author specifies the extent to which you can copy, distribute, and modify it.
-
-2.1 FREEDOM TO COPY (OR TO MAKE REPRODUCTIONS)
-You have the right to copy this work for yourself, your friends or any other person, whatever the technique used.
-
-2.2 FREEDOM TO DISTRIBUTE, TO PERFORM IN PUBLIC
-You have the right to distribute copies of this work; whether modified or not, whatever the medium and the place, with or without any charge, provided that you:
-attach this license without any modification to the copies of this work or indicate precisely where the license can be found,
-specify to the recipient the names of the author(s) of the originals, including yours if you have modified the work,
-specify to the recipient where to access the originals (either initial or subsequent).
-The authors of the originals may, if they wish to, give you the right to distribute the originals under the same conditions as the copies.
-
-2.3 FREEDOM TO MODIFY
-You have the right to modify copies of the originals (whether initial or subsequent) provided you comply with the following conditions:
-all conditions in article 2.2 above, if you distribute modified copies;
-indicate that the work has been modified and, if it is possible, what kind of modifications have been made;
-distribute the subsequent work under the same license or any compatible license.
-The author(s) of the original work may give you the right to modify it under the same conditions as the copies.
-
-3. RELATED RIGHTS
-Activities giving rise to author’s rights and related rights shall not challenge the rights granted by this license.
-For example, this is the reason why performances must be subject to the same license or a compatible license. Similarly, integrating the work in a database, a compilation or an anthology shall not prevent anyone from using the work under the same conditions as those defined in this license.
-
-4. INCORPORATION OF THE WORK
-Incorporating this work into a larger work that is not subject to the Free Art License shall not challenge the rights granted by this license.
-If the work can no longer be accessed apart from the larger work in which it is incorporated, then incorporation shall only be allowed under the condition that the larger work is subject either to the Free Art License or a compatible license.
-
-5. COMPATIBILITY
-A license is compatible with the Free Art License provided:
-it gives the right to copy, distribute, and modify copies of the work including for commercial purposes and without any other restrictions than those required by the respect of the other compatibility criteria;
-it ensures proper attribution of the work to its authors and access to previous versions of the work when possible;
-it recognizes the Free Art License as compatible (reciprocity);
-it requires that changes made to the work be subject to the same license or to a license which also meets these compatibility criteria.
-
-6. YOUR INTELLECTUAL RIGHTS
-This license does not aim at denying your author’s rights in your contribution or any related right. By choosing to contribute to the development of this common work, you only agree to grant others the same rights with regard to your contribution as those you were granted by this license. Conferring these rights does not mean you have to give up your intellectual rights.
-
-7. YOUR RESPONSIBILITIES
-The freedom to use the work as defined by the Free Art License (right to copy, distribute, modify) implies that everyone is responsible for their own actions.
-
-8. DURATION OF THE LICENSE
-This license takes effect as of your acceptance of its terms. The act of copying, distributing, or modifying the work constitutes a tacit agreement. This license will remain in effect for as long as the copyright which is attached to the work. If you do not respect the terms of this license, you automatically lose the rights that it confers.
-If the legal status or legislation to which you are subject makes it impossible for you to respect the terms of this license, you may not make use of the rights which it confers.
-
-9. VARIOUS VERSIONS OF THE LICENSE
-This license may undergo periodic modifications to incorporate improvements by its authors (instigators of the « Copyleft Attitude » movement) by way of new, numbered versions.
-You will always have the choice of accepting the terms contained in the version under which the copy of the work was distributed to you, or alternatively, to use the provisions of one of the subsequent versions.
-
-10. SUB-LICENSING
-Sub-licenses are not authorized by this license. Any person wishing to make use of the rights that it confers will be directly bound to the authors of the common work.
-
-11. LEGAL FRAMEWORK
-This license is written with respect to both French law and the Berne Convention for the Protection of Literary and Artistic Works.
-
-USER GUIDE
-
-– How to use the Free Art License?
-To benefit from the Free Art License, you only need to mention the following elements on your work:
-[Name of the author, title, date of the work. When applicable, names of authors of the common work and, if possible, where to find the originals].
-Copyleft: This is a free work, you can copy, distribute, and modify it under the terms of the Free Art License http://artlibre.org/licence/lal/en/
-
-– Why to use the Free Art License?
-1.To give the greatest number of people access to your work.
-2.To allow it to be distributed freely.
-3.To allow it to evolve by allowing its copy, distribution, and transformation by others.
-4.So that you benefit from the resources of a work when it is under the Free Art License: to be able to copy, distribute or transform it freely.
-5.But also, because the Free Art License offers a legal framework to disallow any misappropriation. It is forbidden to take hold of your work and bypass the creative process for one’s exclusive possession.
-
-– When to use the Free Art License?
-Any time you want to benefit and make others benefit from the right to copy, distribute and transform creative works without any exclusive appropriation, you should use the Free Art License. You can for example use it for scientific, artistic or educational projects.
-
-– What kinds of works can be subject to the Free Art License?
-The Free Art License can be applied to digital as well as physical works.
-You can choose to apply the Free Art License on any text, picture, sound, gesture, or whatever sort of stuff on which you have sufficient author’s rights.
-
-– Historical background of this license:
-It is the result of observing, using and creating digital technologies, free software, the Internet and art. It arose from the « Copyleft Attitude » meetings which took place in Paris in 2000. For the first time, these meetings brought together members of the Free Software community, artists, and members of the art world. The goal was to adapt the principles of Copyleft and free software to all sorts of creations. http://www.artlibre.org
-
-Copyleft Attitude, 2007.
-You can make reproductions and distribute this license verbatim (without any changes).
