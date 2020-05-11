@@ -115,7 +115,7 @@ ul#essays li img, ul#activities li img {
 	color: SlateGrey;
 }
 
-.info a:link, .info a:visited {
+.info a:link, .info a:visited, .meta a:link, .meta a:visited {
 	color: SlateGrey;
 }
 
