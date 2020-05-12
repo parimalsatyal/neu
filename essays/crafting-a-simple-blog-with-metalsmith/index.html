@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>A Beginner&#x27;s Guide to Crafting a Blog with Metalsmith - Neustadt.fr</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="An earlier version of Neustadt.fr was built with Metalsmith, a node.js-based static site generator. In this tutorial, I show you how you can build your own Metalsmith blog from scratch." />
+	<meta name="keywords" content="island, poem, siren, nymphs, shipwreck"/>
+  <meta name="author" content="Parimal Satyal">
+  <link rel="stylesheet" href="../../css/neustadt.css" type="text/css" media="all">
+	<link rel="stylesheet" href="crafting-a-simple-blog-with-metalsmith.css" type="text/css" media="all">
+  <link rel="shortcut icon" href="../../favicon.ico">
+  </head>
+  <body>
+	<div id="wrapper">
+	<article>
+		<header>
+		<h1>A Beginner's Guide to Crafting a Blog with Metalsmith <img src="tool-folder.png" width="40px" style="margin-bottom: -0.3rem;" /></h1>
+		<p class="lede">An earlier version of Neustadt.fr was built with <a href="https://metalsmith.io/">Metalsmith</a>, a node.js-based static site generator. In this tutorial, I show you how you can build your own Metalsmith blog from scratch.</p>
+		<p class="info">- <a href="../../index.html">Parimal Satyal</a>, 30 September 2016</p>
+		</header>
+		
+      <p>Neustadt.fr started, as many things have, with <a href="https://news.ycombinator.com/item?id=10001996">a post on Hacker News</a>. I stumbled upon <a href="http://www.madewithtea.com/">Jendrik Poloczek&#39;s very simple, readable website</a> after one of his articles made it to the front page. His website is apparently <em>powered by <a href="http://blog.getpelican.com/">Pelican</a></em>, a Python-based static site generator. I didn&#39;t really know what that meant but I was intrigued.</p>
+<p>This came at a time when I was getting increasingly frustrated with the wastefulness, bloat and disregard for privacy in modern web design. Not to mention the layers and layers of dependencies. People who want a simple website today often end up with a dynamic database-dependent WordPress blog running a theme that has widgets, infinite scroll, lightbox, a media gallery, Google Analytics and jQuery animations built-in. And all they wanted was to post a few articles and photos every month. It&#39;s absurd.</p>
+<h2 id="why-go-static-">Why go static?</h2>
+<p>Simplicity and speed. Call it nostalgia but I like to keep things small, simple and manageable. There&#39;s something beautiful about a website in standard HTML, CSS and (minimal) Javascript that can be hosted pretty much anywhere. Even <a href="https://neocities.org/">Neocities</a>.</p>
+<p>With a static website, you don&#39;t have to worry about databases, SQL injections, security patches and server environments. Need to change hosts? Migrating is as simple as copy/paste. Then there&#39;s the speed. Between the caching and not having to query databases to dynamically generate pages every time, you end up with something very robust. A <a href="http://anders.unix.se">friend who recently went static</a> had <a href="https://anders.unix.se/2015/10/28/screenshots-from-developers--unix-people-2002/">an article</a> make it to the front page of <a href="https://news.ycombinator.com/">Hacker News</a>, bringing in about 3 GB of traffic in one day. Since he was only serving plain HTML and CSS, his server handled it just fine.</p>
+<h2 id="why-metalsmith-">Why Metalsmith?</h2>
+<p>Before choosing Metalsmith, I looked into Python-based <a href="http://blog.getpelican.com/">Pelican</a>, Ruby-based <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://middlemanapp.com/">Middleman</a>, node.js-powered <a href="https://middlemanapp.com/">Wintersmith</a> and Golang-powered <a href="https://gohugo.io/">Hugo</a>. They are all capable static site generators with active developer and user communities so you&#39;d really be okay with any of them.</p>
+<p>What I loved about Metalsmith is that it does nothing out of the box. It just takes a source directory and spits everything out into a destination directory. If you want it to do anything meaningful, you need to build your own workflow with plugins. And in Metalsmith, <em>everything</em> is a plugin.</p>
+<p>Instead of having to <em>disable</em> features I don&#39;t need, I could simply <em>add</em> the ones I want from a growing <a href="www.metalsmith.io/#the-plugins">ecosystem of over a 130 plugins</a>. Markdown, drafts, permalinks, code highlighting, templates - they&#39;re all optional plugins.</p>
+<h2 id="requirements-and-audience">Requirements and audience</h2>
+<p>This tutorial is for beginners, so it&#39;ll be quite detailed and verbose. </p>
+<p>Our example blog will be extremely simple: an index page with a list of all articles, a page for each article and an about page. It&#39;ll be the personal website of fictional astrophycisist (and retro music enthusiast) Tara Himmels, who&#39;ll name her blog <em>Electroniq</em>. </p>
+<p>I assume only that you are familiar with basic HTML/CSS and are at least a little bit comfortable using the command line (or not scared of it, at the very least). You&#39;ll also need to be familiar with very basic Javascript syntax. If you&#39;re not, don&#39;t worry; I&#39;m no programmer either, you can learn as you go.</p>
+<p>We&#39;ll be writing our posts in <a href="https://help.github.com/articles/markdown-basics/">Markdown</a>, a simple markup language that lets you format your posts easily without having to throw in HTML tags everywhere. It then converts it to HTML for you. If you don&#39;t know it, you can learn it in 5 minutes.</p>
+<p>You don&#39;t need to know <a href="https://nodejs.org">node.js</a>. I didn&#39;t when I started.</p>
+<p>To complete this tutorial, you will need:</p>
+<ul>
+<li>A computer running Windows, Mac OS X or almost any UNIX-based OS</li>
+<li>Shell access (like Terminal on Mac)</li>
+<li>A text editor (like <a href="http://brackets.io/">Brackets</a> or <a href="http://www.vim.org/">vim</a>)</li>
+<li>A web browser</li>
+<li>A web host if you want to go live (we&#39;ll talk about this later)</li>
+</ul>
+<p>I usually also use <a href="http://www.git-scm.com/">Git</a> for version control. But let&#39;s keep things simple for this tutorial.</p>
+<h2 id="installing-node-js-and-metalsmith">Installing Node.js and Metalsmith</h2>
+<p>If you&#39;re running Windows or Mac OS X, the easiest way to install Node.js is to download and install <a href="https://nodejs.org/en/download/">the precompiled binaries</a> (or via  <a href="https://github.com/Homebrew/brew">Homebrew</a> on the Mac). If you&#39;re running Linux, you can use your distro&#39;s <a href="https://nodejs.org/en/download/package-manager/">package manager</a>. </p>
+<p>This installs both Node.js and <a href="https://nodejs.org/en/download/package-manager/">npm</a>, the node package manager that we&#39;ll be using to install all our plugins.</p>
+<p>Once you have npm installed, you can go ahead and install metalsmith. Before you do so, let&#39;s create a project directory. On the command line, type this (omitting the <code>$</code>, which is just a convention to denote the prompt):</p>
+<pre><code class="hljs">$ <span class="hljs-built_in">mkdir</span> electroniq</code></pre>
+
+<p>Then <code>cd</code> into that directory and make a new folder called <code>src</code>.</p>
+<pre><code class="hljs">$ <span class="hljs-built_in">cd</span> electroniq
+$ <span class="hljs-built_in">mkdir</span> src</code></pre>
+
+<p>We&#39;ll use this folder to store all our source files: our posts in Markdown (<code>.md</code>) and our site assets (<code>.css</code>,  <code>.js</code> and image files). But first, we&#39;ll need a <em>package file</em> for all our dependencies (every plugin in Methalsmith is a dependency). We&#39;ll write this in a format called JSON.</p>
+<p>On your root folder (<code>electroniq</code>, which I&#39;ll refer to simply with the conventional forward slash <code>/</code>) , create a file called <code>package.json</code> with this text:</p>
+<pre><code class="hljs">{
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"electroniq"</span></span>,
+"<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-string">"1.0.0"</span></span>,
+"<span class="hljs-attribute">private</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Electroniq is astrophysicist (and retro music enthusiast) Tara Himmels' blog."</span></span>,
+"<span class="hljs-attribute">author</span>": <span class="hljs-value"><span class="hljs-string">"Tara Himmels"</span>
+</span>}</code></pre>
+
+<p>For now, we&#39;re just seting up your node.js environment with some meta information. But the <code>package.js</code> file does a lot more; it holds everything together. Every time we use a plugin, we&#39;ll need to declare it in this file. Luckily, this can be automated; let&#39;s install a plugin to see it in action.</p>
+<p>We&#39;ll start by installing metalsmith itself. On your root folder, type:</p>
+<pre><code class="hljs">$ npm <span class="hljs-operator"><span class="hljs-keyword">install</span> metalsmith <span class="hljs-comment">--save</span></span></code></pre>
+
+<p>This installs metalsmith and creates a <code>node_modules</code> folder with all of metalsmith&#39;s dependencies. The <code>--save</code> flag automatically also adds metalsmith to your <code>package.json</code> file; if you open it now, it&#39;ll look something like this:</p>
+<pre><code class="hljs json">{
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"electroniq"</span></span>,
+"<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-string">"1.0.0"</span></span>,
+"<span class="hljs-attribute">private</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Electroniq is astrophysicist (and retro music enthusiast) Tara Himmels' blog."</span></span>,
+"<span class="hljs-attribute">author</span>": <span class="hljs-value"><span class="hljs-string">"Tara Himmels"</span></span>,
+"<span class="hljs-attribute">dependencies</span>": <span class="hljs-value">{
+  "<span class="hljs-attribute">metalsmith</span>": <span class="hljs-value"><span class="hljs-string">"^2.2.0"</span>
+</span>}  
+</span>}</code></pre>
+
+<p>We now have <em>nodejs</em>, <em>npm</em> and <em>Metalsmith</em> installed. We also have a project directory, a source directory, a package dependency file and a folder that&#39;ll hold all of our node modules.</p>
+<p>Now to start forging.</p>
+<h2 id="a-basic-workflow">A basic workflow</h2>
+<p>First things first, we need a build file to define our metalsmith workflow -- a succession of plugins. Create a file called <code>build.js</code> and type/paste this in:</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> metalsmith = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith'</span>);
+
+metalsmith(__dirname)
+.metadata({
+  site: {
+    name: <span class="hljs-string">'Electroniq'</span>,
+    description: <span class="hljs-string">"Electroniq is astrophysicist (and retro music enthusiast) Tara Himmels' blog."</span>
+  }
+})
+.source(<span class="hljs-string">'./src'</span>)
+.destination(<span class="hljs-string">'./public'</span>)
+.build(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err)</span> </span>{
+  <span class="hljs-keyword">if</span> (err) {
+    <span class="hljs-built_in">console</span>.log(err);
+  }
+  <span class="hljs-keyword">else</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Electroniq built!'</span>);
+  }
+});</code></pre>
+
+<p>A basic Metalsmith setup can be more compact than this, but we&#39;ve added a few things that are important. Let&#39;s go over this line by line. If you know what&#39;s going on here, feel free to skip ahead.</p>
+<p>First, we require metalsmith itself:</p>
+<pre><code class="hljs"><span class="hljs-reserved">var</span> metalsmith        = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith'</span>);</code></pre>
+
+<p>We&#39;ll need to do this for every plugin we use. Most dependencies on your <code>package.json</code> file will also need to be declared/required here.</p>
+<p>Next, we call the main <code>metalsmith()</code> function itself and define metadata that&#39;ll be useful later. These values can be called from any of our templates. For now, we&#39;ll just include a name that we can later use as in <code>&lt;title&gt;</code> tag of our blog.</p>
+<p>Then, we define our source folder (<code>./src</code>), a destination folder where Metalsmith will output our static site (<code>./public</code>), and call the <code>build()</code> function to run our workflow. </p>
+<p>We&#39;ve also included basic error catching. Should Metalsmith encounter an exception, it&#39;ll be appended to the Javascript console, which will be useful for debugging. Otherwise, it&#39;ll post a message to the Termnial indicating that the build was successful.</p>
+<p>Now, we&#39;ll create a bridge between <code>package.json</code> to our newly-forged <code>build.js</code> file. Open <code>package.json</code> and add the <em>main</em> and <em>scripts</em> bit at the end, like so: </p>
+<pre><code class="hljs json">{
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"electroniq"</span></span>,
+"<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-string">"1.0.0"</span></span>,
+"<span class="hljs-attribute">private</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Electroniq is astrophysicist (and retro music enthusiast) Tara Himmels' blog."</span></span>,
+"<span class="hljs-attribute">author</span>": <span class="hljs-value"><span class="hljs-string">"Tara Himmels"</span></span>,
+"<span class="hljs-attribute">dependencies</span>": <span class="hljs-value">{
+  "<span class="hljs-attribute">metalsmith</span>": <span class="hljs-value"><span class="hljs-string">"^2.2.0"</span>
+</span>}</span>,
+  "<span class="hljs-attribute">main</span>": <span class="hljs-value"><span class="hljs-string">"build.js"</span></span>,
+"<span class="hljs-attribute">scripts</span>": <span class="hljs-value">{
+  "<span class="hljs-attribute">prestart</span>": <span class="hljs-value"><span class="hljs-string">"npm install"</span></span>,
+  "<span class="hljs-attribute">start</span>": <span class="hljs-value"><span class="hljs-string">"node ."</span>
+    </span>}
+</span>}</code></pre>
+
+<p>These lines we added tells node that <code>build.js</code> is the main entry point for our project. We then define two scripts; the <em>start</em> bit essentially just tells node to run this main script and the optional <em>prestart</em> bit just installs or updates all your dependences first.</p>
+<p>This is what your <code>electroniq</code> directory should now look like :</p>
+<pre><code class="hljs">.
+├── node_modules/
+│   └── <span class="hljs-keyword">...</span>
+├── src/
+├── build.js
+└── package.json</code></pre>
+
+<p>You now have a basic Metalsmith setup. It doesn&#39;t do anything yet (other than copy the nothingness in your source directory to your destination directory), but we can technically build our website.</p>
+<p>Give it a go:</p>
+<pre><code class="hljs">$ <span class="hljs-built_in">npm</span> start</code></pre>
+
+<p>It&#39;s nice to get that little &quot;Electroniq built!&quot; message on the console, isn&#39;t it? Now let&#39;s make Metalsmith actually do something.</p>
+<h2 id="markdown-and-frontmatter">Markdown and Frontmatter</h2>
+<p>Using Markdown to write your posts makes sense: you can format text, the text remains readable and the whole thing converts easily to standard HTML. In fact, <a href="https://github.com/parimalsatyal/neustadt.fr-metalsmith/blob/master/src/essays/crafting-a-simple-blog-with-metalsmith.md">this tutorial is written in Markdown</a>.</p>
+<p>To use Markdown, you need to install the plugin first :</p>
+<pre><code class="hljs">$ npm <span class="hljs-operator"><span class="hljs-keyword">install</span> metalsmith-markdown <span class="hljs-comment">--save</span></span></code></pre>
+
+<p>Open <code>build.js</code>. First, before using the plugin, we must <em>require</em> it at the start of our file:</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> metalsmith = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith'</span>);
+<span class="hljs-keyword">var</span> markdown = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith-markdown'</span>);
+<span class="hljs-comment">// ...</span></code></pre>
+
+<p>Now add Markdown between <code>.destination()</code> and <code>.build()</code> like so:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// ...</span>
+  .source(<span class="hljs-string">'./src'</span>)
+  .destination(<span class="hljs-string">'./public'</span>)
+  .use(markdown())
+  .build(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err)</span> </span>{
+<span class="hljs-comment">// ...</span></code></pre>
+
+<p>And that&#39;s it. This is how you add plugins to your workflow. </p>
+<p>Of course they usually take parameters, but we&#39;ll see that later. It&#39;s important to remember that the <em>order</em> of plugins is usually important; think of it as a pipeline. Each action passes on its results to the next.</p>
+<p>Now let&#39;s write a sample article in Markdown. We&#39;ll title it &quot;Hello Universe&quot;.</p>
+<p>Create a new file in your <code>src</code> folder called <code>hello-universe.md</code>:</p>
+<pre><code class="hljs markdown"><span class="hljs-horizontal_rule">---</span>
+title: "Hello World"
+date: 2016-10-12
+<span class="hljs-header">blurb: An introduction to our blog Electroniq
+---</span>
+
+<span class="hljs-header">## Welcome to Electroniq</span>
+
+<span class="hljs-emphasis">*Electroniq*</span> is a new blog about space, distant galaxies and black holes.
+
+We'll talk about [<span class="hljs-link_label">the holographic principle</span>](<span class="hljs-link_url">https://en.wikipedia.org/wiki/Holographic_principle</span>), dark matter and the beauty of space in infrared light.
+
+This blog is run by <span class="hljs-strong">**Tara**</span> and <span class="hljs-strong">**Elias**</span>.</code></pre>
+
+<p>The bit at the top between the <code>---</code> is called fontmatter. Here, it&#39;s in <a href="http://yaml.org/">YAML</a> but that&#39;s not too important. These are just metadata that we&#39;ll be able to access in the template. Here we&#39;ve included a <em>title</em>, a <em>date</em> and a <em>blurb</em>. You could also use add these kind of key/value pairs for keywords, categories, author name, modified date… you get the idea.</p>
+<p>We don&#39;t have a template to display this content yet, but since we added Markdown to our workflow, Metalsmith will still be able to convert it to HTML. Build your project to check:</p>
+<pre><code class="hljs">$ <span class="hljs-built_in">npm</span> start</code></pre>
+
+<p>This will create a new folder called <code>public</code> with a file <code>hello-universe.html</code>. Your root directory should now look like this:</p>
+<pre><code class="hljs">.
+├── node_modules/
+│   └── <span class="hljs-keyword">...</span>
+├── src/
+│   └── hello-universe.md
+├── public/
+│   └── hello-universe.html
+├── build.js
+├── Makefile
+└── package.json</code></pre>
+
+<p>Open the generated <code>hello-universe.html</code> file on your editor. It will simply contain:</p>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-title">h1</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"welcome-to-electroniq"</span>&gt;</span>Welcome to Electroniq<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">em</span>&gt;</span>Electroniq<span class="hljs-tag">&lt;/<span class="hljs-title">em</span>&gt;</span> is a new blog about space, distant galaxies and black holes.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>We&amp;#39;ll talk about <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://en.wikipedia.org/wiki/Holographic_principle"</span>&gt;</span>the holographic principle<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>, dark matter and the beauty of space in infrared light.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This blog is run by <span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>Tara<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span> and <span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>Elias<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span></code></pre>
+
+<p>Metalsmith has converted your article from Markdown into HTML. This is a good start but our page is incomplete. There&#39;s no <head> or navigation or any structure, and we&#39;re not using information in our YAML frontmatter. </p>
+<p>What we need is a template to display this page. Let&#39;s make one now.</p>
+<h2 id="templates">Templates</h2>
+<p>One of the reasons to use a static site generator is to be able to use templates with HTML markup and variables we can reuse on different pages without having to repeat any of it.</p>
+<p>Metalsmith comes with a plugin that lets you write your templates in pretty much <a href="https://www.npmjs.com/package/consolidate">any templating engine</a>. If you don&#39;t know what these are, don&#39;t worry. They&#39;re a way we can access data and variables from within our templates. For this project, we&#39;ll use <a href="http://handlebarsjs.com/">Handlebars</a>.</p>
+<p>Let&#39;s start by installing the metalsmith templating plugin, called <code>metalsmith-layouts</code>:</p>
+<pre><code class="hljs">$ npm <span class="hljs-operator"><span class="hljs-keyword">install</span> metalsmith-layouts <span class="hljs-comment">--save</span></span></code></pre>
+
+<p>We&#39;ll also install Handlebars while we&#39;re at it:</p>
+<pre><code class="hljs">$ npm <span class="hljs-operator"><span class="hljs-keyword">install</span> handlebars <span class="hljs-comment">--save</span></span></code></pre>
+
+<p>We know that these dependencies will automatically be added to our <code>package.json</code> file. Now let&#39;s add them to our workflow. Open <code>build.js</code> and first require our two new packages:</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> metalsmith = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith'</span>);
+<span class="hljs-keyword">var</span> markdown = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith-markdown'</span>);
+<span class="hljs-keyword">var</span> layouts = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith-layouts'</span>);
+<span class="hljs-keyword">var</span> handlebars = <span class="hljs-built_in">require</span>(<span class="hljs-string">'handlebars'</span>);
+<span class="hljs-comment">// ...</span></code></pre>
+
+<p>And then add them to our workflow:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// ...</span>
+  .source(<span class="hljs-string">'./src'</span>)
+  .destination(<span class="hljs-string">'./public'</span>)
+  .use(markdown())
+  .use(layouts({
+          engine: <span class="hljs-string">'handlebars'</span>,
+          directory: <span class="hljs-string">'./layouts'</span>,
+          <span class="hljs-keyword">default</span>: <span class="hljs-string">'article.html'</span>,
+          pattern: [<span class="hljs-string">"*/*/*html"</span>,<span class="hljs-string">"*/*html"</span>,<span class="hljs-string">"*html"</span>]
+      }))
+  .build(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err)</span> </span>{
+<span class="hljs-comment">// ...</span></code></pre>
+
+<p>This snippet tells Metalsmith to use Handlebars templates, look for them in the <code>layouts</code> directory and use a template called <code>article.html</code> by default. We also define a pattern for layout files; in this case, they&#39;re any files with the <em>.html</em> extension.</p>
+<p>Let&#39;s create our layouts directory and write our default template now:</p>
+<pre><code class="hljs">$ <span class="hljs-built_in">mkdir</span> layouts</code></pre>
+
+<p>Inside this folder, create a file called <code>article.html</code> with these contents:</p>
+<pre><code class="hljs handlebars"><span class="xml"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"utf-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span></span><span class="hljs-expression">{{ <span class="hljs-variable">title</span> }}</span><span class="xml"> - </span><span class="hljs-expression">{{ <span class="hljs-variable">site.name</span> }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"description"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"</span></span></span><span class="hljs-expression">{{ <span class="hljs-variable">blurb</span> }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">article</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span></span><span class="hljs-expression">{{ <span class="hljs-variable">title</span> }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"meta"</span>&gt;</span>
+        </span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">if</span> date</span>}}</span><span class="xml">Published: </span><span class="hljs-expression">{{ <span class="hljs-variable">date</span> }}</span><span class="xml"></span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">if</span></span>}}</span><span class="xml">
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    </span><span class="hljs-expression">{{{ <span class="hljs-variable">contents</span> }}</span><span class="xml">}
+  <span class="hljs-tag">&lt;/<span class="hljs-title">article</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span></code></pre>
+
+<p>It&#39;s a pretty standard HTML page, except for the Handlebars tags in <code>{{ }}</code>. These are placeholders that will be replaced by actual content in the static output. For example, we want the name of our website in our page&#39;s <code>&lt;title&gt;</code>, along with the title of the article.</p>
+<p>Remember we already defined the site name in <code>build.js</code> as global metadata, like so:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// ...</span>
+metalsmith(__dirname)
+.metadata({
+  site: {
+    name: <span class="hljs-string">'Electroniq'</span>,
+  }
+})
+<span class="hljs-comment">// ...</span></code></pre>
+
+<p>In the template, we can access this information via the <code>{{ site.name }}</code> variable. The other tags &mdash; <code>title</code> and and <code>date</code> &mdash; come from our article&#39;s frontmatter.</p>
+<p>The article itself can be accessed quite through the <code>{{{ content }}}</code> tag. We&#39;re using three curly brackets here instead of the usual two because we don&#39;t want Handlebars to <em>escape</em> any characters (Markdown does that for us).</p>
+<p>There&#39;s also an <code>{{#if date}}</code> conditional tag there, but we&#39;ll explain that a bit later.</p>
+<p>To see what Metalsmith generated for us with this template, build the project:</p>
+<pre><code class="hljs">$ <span class="hljs-built_in">npm</span> start</code></pre>
+
+<p>And open <code>public/hello-universe.html</code> in your editor. You should see something like this:</p>
+<pre><code class="hljs"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"utf-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>Hello World - Electroniq<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"description"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"An introduction to our blog Electroniq"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">article</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"meta"</span>&gt;</span>
+        Published: Wed Oct 12 2016 02:00:00 GMT+0200 (CEST)
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"welcome-to-electroniq"</span>&gt;</span>Welcome to Electroniq<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">em</span>&gt;</span>Electroniq<span class="hljs-tag">&lt;/<span class="hljs-title">em</span>&gt;</span> is a new blog about space, distant galaxies and black holes.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>We&amp;#39;ll talk about <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://en.wikipedia.org/wiki/Holographic_principle"</span>&gt;</span>the holographic principle<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>, dark matter and the beauty of space in infrared light.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This blog is run by <span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>Tara<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span> and <span class="hljs-tag">&lt;<span class="hljs-title">strong</span>&gt;</span>Elias<span class="hljs-tag">&lt;/<span class="hljs-title">strong</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;/<span class="hljs-title">article</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
+
+<p>So we now have an article page.</p>
+<p>What we don&#39;t have is an index page that lists all the articles we publish. To do this, we&#39;ll need a plugin called <code>metalsmith-collections</code>. Go ahead and install that now.</p>
+<pre><code class="hljs">$ npm <span class="hljs-operator"><span class="hljs-keyword">install</span> metalsmith-collections <span class="hljs-comment">--save</span></span></code></pre>
+
+<p>As always with a new plugin, require it and then add it do your workflow in <code>build.js</code> like so:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">var</span> collections = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith-collections'</span>);
+<span class="hljs-comment">// ...</span>
+  .source(<span class="hljs-string">'./src'</span>)
+  .destination(<span class="hljs-string">'./public'</span>)
+  .use(collections({
+    articles: {
+      pattern: <span class="hljs-string">'articles/**/*.md'</span>,
+      sortBy: <span class="hljs-string">'date'</span>,
+      reverse: <span class="hljs-literal">true</span>
+      },
+    }))
+  .use(markdown())
+  .use(layouts({
+<span class="hljs-comment">// ...</span></code></pre>
+
+<p>A collection is like a filter based on certain criteria. Here, we&#39;ll simply want a list of all our articles in reverse-chronological order (so newest first). The <code>pattern: &#39;articles/**/*.md&#39;</code> bit is important; it tells the plugin that it should consider any Markdown files in the <code>/src/articles</code> directory part of the collection.</p>
+<p>But that folder doesn&#39;t exist yet; our one article lives in <code>/src/</code>. Let&#39;s fix that now. Create our articles folder under <code>/src</code>:</p>
+<pre><code class="hljs sh">$ <span class="hljs-built_in">cd</span> src
+$ mkdir articles</code></pre>
+
+<p>Now let&#39;s move our existing article there. </p>
+<pre><code class="hljs">$ mv hello-universe<span class="hljs-class">.md</span> articles</code></pre>
+
+<p>While we&#39;re at it, let&#39;s add a second article. You should be able to do this on our own. Simple create a new file in the <code>articles</code> directory with any filename that ends in <code>.md</code>. </p>
+<p>So, for example, you could write about <em>Spooky Action at a Distance</em> and name the file <code>spooky-action.md</code> :</p>
+<pre><code class="hljs"><span class="hljs-bullet">---
+</span>title: "Spooky Action"
+date: 2016-10-14
+<span class="hljs-header">blurb: "What would Einstein make of quantum entanglement today?"
+---</span>
+
+## Spooky Action at a Distance
+
+Some text here.</code></pre>
+
+<p>Ok, we now have two articles. This is starting to look more like a blog.</p>
+<p>But we don&#39;t have a layout for the index page quite yet. Let&#39;s create that now. Switch to our <code>layouts</code> directory create a copy of our article page and name it <code>index.html</code>. </p>
+<pre><code class="hljs sh">$ <span class="hljs-built_in">cd</span> ../layouts
+$ cp article.html index.html</code></pre>
+
+<p>Change the code so it looks like this:</p>
+<pre><code class="hljs handlebars"><span class="xml"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"utf-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span></span><span class="hljs-expression">{{ <span class="hljs-variable">site.name</span> }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"description"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"</span></span></span><span class="hljs-expression">{{ <span class="hljs-variable">site.description</span> }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span></span><span class="hljs-expression">{{ <span class="hljs-variable">site.name</span> }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"recent"</span>&gt;</span>
+  </span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> articles </span>}}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"title"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"</span></span></span><span class="hljs-expression">{{ <span class="hljs-variable">path</span> }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">"</span>&gt;</span></span><span class="hljs-expression">{{ <span class="hljs-variable">title</span> }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"date"</span>&gt;</span></span><span class="hljs-expression">{{ <span class="hljs-variable">date</span> }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+  </span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
+  <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span></code></pre>
+
+<p>In the <code>&lt;head&gt;</code> section, we&#39;ve removed the bit with <code>{{ title }}</code>, which only exists for articles and left just the <code>{{ site.name }}</code> bit and we&#39;ve switched out the <code>{{ blurb }}</code> for <code>{{ site.description }}</code>.</p>
+<p>The bit in between the <code>&lt;body&gt;</code> tags introduces new Handlebars code:</p>
+<pre><code class="hljs">{{<span class="hljs-comment">#each articles }}</span>
+<span class="hljs-keyword">...</span>
+{{/each}}</code></pre>
+
+<p>This is a loop of all articles (the collection we previously defined). So this page will just be a list of all articles we write, with a title and a date for each.</p>
+<p>However, before Metalsmith is able to generate our index page in our <code>/public</code> directory, we need a file called <code>index.md</code> file in the <code>/src</code> folder. Create this file now:</p>
+<pre><code class="hljs"><span class="hljs-bullet">---
+</span><span class="hljs-header">layout: index.html
+---</span></code></pre>
+
+<h2 id="partials">Partials</h2>
+<p>It&#39;s a good start but we&#39;re repeating code in our two template files. This is not ideal because if we ever want to change something in the header, we&#39;d need to change it on every template that contains it. To avoid this, we can split reusable code into smaller sub-templates, or <em>partials</em>, that we can call from our main templates.</p>
+<p>Let&#39;s create two partials, one for the header and one for the footer. Metalsmith doesn&#39;t impose any rules on where you put these files and what you call them; we&#39;re free to structure it any way we want. We&#39;ll keep things logical and have them live in a folder called <code>partials</code> in our <code>layouts</code> folder.</p>
+<p>Create the folder now:</p>
+<pre><code class="hljs">$ <span class="hljs-built_in">cd</span> layouts
+$ <span class="hljs-built_in">mkdir</span> partials</code></pre>
+
+<p>In this folder, create a file <code>header.html</code> that contains:</p>
+<pre><code class="hljs handlebars"><span class="xml"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"utf-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">if</span> title </span>}}</span><span class="xml">{ {title }} - </span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">if</span></span>}}</span><span class="xml"></span><span class="hljs-expression">{{ <span class="hljs-variable">site.name</span> }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"description"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"</span></span></span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">if</span> blurb</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value"></span></span></span><span class="hljs-expression">{{ <span class="hljs-variable">blurb</span> }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value"></span></span></span><span class="hljs-expression">{{<span class="hljs-variable"><span class="hljs-keyword">else</span></span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value"></span></span></span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">if</span> description</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value"></span></span></span><span class="hljs-expression">{{ <span class="hljs-variable">description</span> }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value"></span></span></span><span class="hljs-expression">{{<span class="hljs-variable"><span class="hljs-keyword">else</span></span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value"></span></span></span><span class="hljs-expression">{{ <span class="hljs-variable">site.description</span> }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value"></span></span></span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">if</span></span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value"></span></span></span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">if</span></span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span></span></code></pre>
+
+<p>This is the bit that goes at the top of every file. You&#39;ll notice that we&#39;ve again replaced the title from <code>{{ site.name }}</code> to a slightly more complicated-looking <code>{{#if title }}{ {title }} - {{/if}}{{ site.name }}</code>. The meta description has something similarly complex. Why?</p>
+<p>We&#39;re going to call the same header partial from our index page as well as our article page but there are small differences in our header between these templates. What we&#39;re doing here is using <em>conditional tags</em> to show different information depending on whether the page is an index page or an article page.</p>
+<p>The conditional <em>if</em> tag in handlebars looks like this:</p>
+<pre><code class="hljs handlebars"><span class="xml"></span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">if</span> title </span>}}</span><span class="xml">
+</span><span class="hljs-expression">{{ <span class="hljs-variable">title</span> }}</span><span class="xml">
+</span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">if</span></span>}}</span><span class="xml"></span></code></pre>
+
+<p>All this says is that <em>if the variable title exists, display it</em>. But we know that <em>title</em> variable only exists for article pages (in the YAML frontmatter), not for index pages. So now our very smart header partial prepends the article title with a dash to the title if it&#39;s called from the article page.</p>
+<p>Same thing for meta description, except this is an <em>if... else</em> conditional block:</p>
+<pre><code class="hljs handlebars"><span class="xml"></span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">if</span> blurb</span>}}</span><span class="xml">
+</span><span class="hljs-expression">{{ <span class="hljs-variable">blurb</span> }}</span><span class="xml">
+</span><span class="hljs-expression">{{<span class="hljs-variable"><span class="hljs-keyword">else</span></span>}}</span><span class="xml">
+</span><span class="hljs-expression">{{ <span class="hljs-variable">site.description</span> }}</span><span class="xml">
+</span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">if</span></span>}}</span><span class="xml"></span></code></pre>
+
+<p>As you&#39;ve by know figured, this uses the <code>blurb</code> variable if one exists in the frontmatter. Else, it&#39;ll just use the site description we defined in our <code>build.js</code> file. This again means that the meta description will be the <code>blurb</code> for an article page and the <code>site.description</code> and for the index page, which makes sense. </p>
+<p>Now create a file called &#39;footer.html&#39; that contains simply:</p>
+<pre><code class="hljs handlebars"><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>  
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span></code></pre>
+
+<p>Nothing too surprising here. </p>
+<p>Now we have to let Metalsmith know that we&#39;ve created these partials so we can invoke them from inside our templaces. To do this, open <code>build.js</code> and modify the parameters for our <em>layouts</em> plugin so they look like this:</p>
+<pre><code class="hljs javascript">.use(layouts({
+    engine: <span class="hljs-string">'handlebars'</span>,
+    directory: <span class="hljs-string">'./layouts'</span>,
+    <span class="hljs-keyword">default</span>: <span class="hljs-string">'article.html'</span>,
+    pattern: [<span class="hljs-string">"*/*/*html"</span>,<span class="hljs-string">"*/*html"</span>,<span class="hljs-string">"*html"</span>]
+    partials: {
+      header: <span class="hljs-string">'partials/header'</span>,
+      footer: <span class="hljs-string">'partials/footer'</span>
+      }
+  }))</code></pre>
+
+<p>Now that our partials are defined, it&#39;s time to use them. </p>
+<p>Edit both <code>article.html</code> and <code>index.html</code> and replace the header that&#39;s there:</p>
+<pre><code class="hljs html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"utf-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>{{ site.name }}<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"description"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"{{ site.description }}"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span></code></pre>
+
+<p>with just this one line, which is Handlebars syntax for calling partials:</p>
+<pre><code class="hljs"><span class="hljs-prompt">{{&gt;</span> header }}</code></pre>
+
+<p>Do the same with the footer, replacing</p>
+<pre><code class="hljs"><span class="hljs-prompt">&lt;/body&gt;</span>  
+<span class="hljs-prompt">&lt;/html&gt;</span></code></pre>
+
+<p>with:</p>
+<pre><code class="hljs"><span class="hljs-prompt">{{&gt;</span> footer }}</code></pre>
+
+<p>We&#39;re almost ready. The only thing missing now is a way to navigate from an article page back to the index page. Open <code>layout/article.html</code> and add the <code>&lt;header&gt;</code> block between <code>{{&gt; header }}</code> and <code>&lt;article&gt;</code> so it looks like this:</p>
+<pre><code class="hljs"><span class="hljs-keyword">...</span>
+{{&gt; header }}
+&lt;header&gt;
+  &lt;a class=<span class="hljs-string">"back-to-index"</span> href=<span class="hljs-string">"../index.html"</span>&gt;&amp;larr; Index&lt;/a&gt;
+&lt;/header&gt;
+&lt;article&gt;
+  &lt;h1&gt;{{ title }}&lt;/h1&gt;
+<span class="hljs-keyword">...</span></code></pre>
+
+<p>This just adds a <em>← Index</em> link at the top of the page (a little like on this website).</p>
+<p>Now try building your blog again and moving between an article page and the index. (Moving the other way might not work yet, we&#39;ll fix this when we get to the permalinks bit.)</p>
+<h2 id="adding-an-about-page">Adding an About Page</h2>
+<p>Finally, let&#39;s add an About page. This is simple. Just create an <code>about.md</code> file in the <code>/src</code> directory. Here too, you can add any key/value pair in the YAML frontmatter. Or remove them, as we&#39;ve done with <em>date</em>, which we won&#39;t need.</p>
+<pre><code class="hljs"><span class="hljs-comment">---</span>
+title: <span class="hljs-string">"About"</span>
+blurb: <span class="hljs-string">"Tara Himmels is an astrophysicist and retro music enthusiast. Electroniq is her blog."</span>
+<span class="hljs-comment">---</span>
+
+Hello, <span class="hljs-keyword">my</span> <span class="hljs-property">name</span> <span class="hljs-keyword">is</span> Tara Himmels.
+
+If you'd like <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-keyword">in</span> touch <span class="hljs-keyword">with</span> <span class="hljs-keyword">me</span>, you can contact <span class="hljs-keyword">me</span> [via email](tarahimmels@example.com). 
+
+In <span class="hljs-keyword">the</span> meantime, I do hope you enjoy your <span class="hljs-property">day</span> <span class="hljs-function_start"><span class="hljs-keyword">on</span></span> this *pale blue dot* <span class="hljs-keyword">that</span> <span class="hljs-keyword">is</span> our home.</code></pre>
+
+<p>Let&#39;s edit to the footer so there&#39;s a link to this page; people wouldn&#39;t be able to get to it otherwise!</p>
+<p>If you open <code>/layout/partials/footer.html</code> in our text editor, it should look like this :</p>
+<pre><code class="hljs"><span class="hljs-prompt">&lt;/body&gt;</span>  
+<span class="hljs-prompt">&lt;/html&gt;</span></code></pre>
+
+<p>Change it to this:</p>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-title">nav</span>&gt;</span>---<span class="hljs-tag">&lt;<span class="hljs-title">br</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/about"</span>&gt;</span>About this blog<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">nav</span>&gt;</span> 
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>  
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
+
+<p>You could build your blog now and view your page at <code>/about.html</code>. It&#39;ll have used our default &#39;article.html&#39; template. But you notice that our in the footer doesn&#39;t actually work (yet). </p>
+<p>This is because our about page actually lives at <code>/about.html</code> and not <code>/about</code>, which is prettier. Let&#39;s fix that now. </p>
+<h2 id="routes-and-pretty-permalinks">Routes and Pretty Permalinks</h2>
+<p>Right now, our index page lives at <code>/index.html</code>, the about page at &#39;/about.html&#39; and any blog post at <code>/articles/title-of-the-article.html</code>. Ideally, we wouldn&#39;t need the <em>.html</em> bit.</p>
+<p>This is the URL structure we want:</p>
+<ul>
+<li>Home page: <code>/</code></li>
+<li>About page: <code>/about</code></li>
+<li>Article page: <code>/title-of-the-article</code></li>
+</ul>
+<p>Notice that these are root-relative links, <code>/</code> being the root. The root could really be a number of other things: a top-level domain like <code>https://electroniq.org/</code>; a subdomain like <code>https://electroniq.example.org/</code>; heck, even a local address like <code>localhost:8081/</code> (we&#39;ll see this again in the next section).</p>
+<p>To enable this kind of routing, we&#39;ll need the <code>metalsmith-permalinks</code> plugin.</p>
+<p>This will allow us to write custom URLs: with a <em>date</em>, maybe, or an <em>id</em> or an <em>author</em> name. As long as this information exists in the front-matter, you can use it in your URL. In our case, we&#39;ll only be using the <code>title</code>. This will give use the URL structure we want:</p>
+<p>Let&#39;s install this plugin:</p>
+<pre><code class="hljs">$ npm <span class="hljs-operator"><span class="hljs-keyword">install</span> metalsmith-permalinks <span class="hljs-comment">--save</span></span></code></pre>
+
+<p>Then open <code>build.js</code> and require it:</p>
+<pre><code class="hljs"><span class="hljs-reserved">var</span> permalinks = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith-permalinks'</span>);</code></pre>
+
+<p>And finally, add it to our workflow, right before <code>layouts</code>:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// ...</span>
+  .use(markdown())
+  .use(permalinks({
+    relative: <span class="hljs-literal">false</span>,
+    pattern: <span class="hljs-string">':title'</span>,
+  }))
+  .use(layouts({
+<span class="hljs-comment">// ...</span></code></pre>
+
+<p>And that&#39;s it. The pattern of our URLs is straightforward, we&#39;ll simply use the title of the post as provided in the frontmatter. So a title like &quot;Spooky Action&quot; will become <code>/spooky-action</code>. </p>
+<p>We&#39;ve also set <em>relative</em> to false. If this were set to true, Metalsmith would make a copy of any resource on the source folder in all sub-folders. But in our case, this isn&#39;t necessary. </p>
+<p>Build your Metalsmith blog now to see your new URLs in action:</p>
+<pre><code class="hljs">$ <span class="hljs-built_in">npm</span> start</code></pre>
+
+<p>This is what your root directory should look like now:</p>
+<pre><code class="hljs">.
+├── node_modules/
+│   └── ...
+├── layouts/
+│   └── index<span class="hljs-class">.html</span>
+│   └── articles<span class="hljs-class">.html</span>
+│   └── reviews<span class="hljs-class">.html</span>
+│   └── partials/
+│      └── <span class="hljs-tag">footer</span><span class="hljs-class">.html</span>
+│      └── <span class="hljs-tag">header</span><span class="hljs-class">.html</span>
+├── src/
+│   └── articles/    
+│      └── hello-universe<span class="hljs-class">.md</span>
+│      └── spooky action<span class="hljs-class">.md</span>
+│   └── about<span class="hljs-class">.md</span>
+├── public/
+│   └── about-tara-himmels/
+│      └── index<span class="hljs-class">.html</span>
+│   └── hello-world/
+│      └── index<span class="hljs-class">.html</span>
+│   └── spooky-action/
+│      └── index<span class="hljs-class">.html</span>
+├── build<span class="hljs-class">.js</span>
+└── package.json</code></pre>
+
+<p>As you can see, the <code>/public</code> folder now represents every page as a folder with its own <code>index.html</code> file. </p>
+<h2 id="watching-local-serving-and-drafts">Watching, (local) serving and drafts</h2>
+<p>You&#39;d probably want to preview your articles before you publish them. You could, of course, open the generated <code>index.html</code> in your browser and reload your page everytime you change something, or you could have live preview. </p>
+<p>To do this, Metalsmith would need to <em>watch</em> your folder and rebuild any files in which it detects changes and <em>serve</em> these pages with its own little webserver. Thankfully, Metalsmih comes with a pair of plugins that do just this: <code>metalsmith-watch</code> and <code>metalsmith-serve</code>.</p>
+<p>Start by installing them:</p>
+<pre><code class="hljs">$ npm <span class="hljs-operator"><span class="hljs-keyword">install</span> metalsmith-watch <span class="hljs-comment">--save</span>
+$ npm <span class="hljs-keyword">install</span> metalsmith-serve <span class="hljs-comment">--save</span></span></code></pre>
+
+<p>Setting them up is super easy. Open your <code>build.js</code> file and first <em>require</em> these plugins:</p>
+<pre><code class="hljs"><span class="hljs-reserved">var</span> serve = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith-serve'</span>);
+<span class="hljs-reserved">var</span> watch = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith-watch'</span>);</code></pre>
+
+<p>Then just add them to your workflow around the end, right before the <code>build()</code> function:</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// ...</span>
+.use(serve({
+port: <span class="hljs-number">8081</span>,
+verbose: <span class="hljs-literal">true</span>
+}))
+.use(watch({
+  paths: {
+    <span class="hljs-string">"${source}/**/*"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"layout/**/*"</span>: <span class="hljs-string">"**/*"</span>,
+  }
+}))
+.build(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err)</span> </span>{
+<span class="hljs-comment">// ...</span></code></pre>
+
+<p>The <code>serve</code> command essentially tells Metalsmith to serve the pages using a local server running on port 8081. The &#39;verbose&#39; option will output status updates to the command line (everytime it detects a change to a file, for example; this is helpful for when you&#39;ve set a wrong path and the server responds with a 404).</p>
+<p>The <code>watch</code> commands takes paths as parameters; these are essentially folders it should watch for changes. We&#39;re going to include the source folder (obviously) and our layout folder.</p>
+<p>Build your Metalsmith blog now to test our local server:</p>
+<pre><code class="hljs">$ <span class="hljs-built_in">npm</span> start</code></pre>
+
+<p>Now go to address <code>http://localhost:8081</code> on your local browser and you should see your index page. </p>
+<p>I should mention that while the serve/watch combo works really well when you&#39;re editing single articles, in my experience you shouldn&#39;t rely on it for changes to your template file. If you notice anomalies, just rebuild your blog.</p>
+<p>To do that, you&#39;ll need to first kill your server by hitting <code>Ctrl + C</code> (on Unix, Mac or Windows). This interrupts the current process. After that, it&#39;s the usual:</p>
+<pre><code class="hljs">$ <span class="hljs-built_in">npm</span> start</code></pre>
+
+<p>Your very simple Metalsmith blog is now ready!</p>
+<h2 id="going-live-aka-deploying-">Going Live (aka. Deploying)</h2>
+<p>This is where things get really fun.</p>
+<p>With a static website, going live is as simple as copying your <code>/public</code> folder to your remote <code>public_html</code> (or equivalent) folder. So your deployment process involves invoking <code>npm start</code> and uploading your public folder to your remote server. This could be any server: on <a href="https://neocities.org/">Neocities</a>, <a href="https://pages.github.com/">GitHub Pages</a> or any old shared hosting account.
+You don&#39;t need PHP, Ruby, node, CGI, MySQl or anything fancy; just any old web server will do.</p>
+<p>For Neustadt.fr, I run an Nginx server on a <a href="https://www.digitalocean.com/">Digital Ocean</a> droplet and deploy using this one-line shell script I&#39;ve named <code>deploy.sh</code>:</p>
+<pre><code class="hljs"><span class="hljs-shebang">#!/bin/sh</span>
+rsync -av <span class="hljs-operator">-e</span> ssh public/* parimalsatyal@<span class="hljs-number">139.59</span>.<span class="hljs-number">134.246</span>:/var/www/neustadt.fr</code></pre>
+
+<p>All it does is use the <a href="https://linux.die.net/man/1/rsync">rsync</a> command to sync the local <code>/public</code> folder with the public folder on my remote s (<code>/var/www/neustadt.fr</code>), via SSH. </p>
+<p>This way, I can update and make as many changes as I please locally and when I&#39;m ready, deploy with just two commands: </p>
+<pre><code class="hljs"><span class="hljs-variable">$ </span>npm start; 
+<span class="hljs-variable">$ </span>./deploy.sh</code></pre>
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>You can browse the completed example project (exactly as we left it here) <a href="https://github.com/parimalsatyal/electroniq-metalsmith">on GitHub</a>.</p>
+<p>This of course is only a start. We&#39;ve built an exceedingly basic website that doesn&#39;t even have CSS styling. We&#39;ve only scratched the surface of what is possible. But if you&#39;ve come this far, you already know how to set up a Metalsmith project, edit your templates and add new pages. </p>
+<p>If you&#39;d like to go further, I&#39;d recommend checking out the <a href="https://github.com/metalsmith/awesome-metalsmith">Awesome Metalsmith</a> list, which also has links to other tutorials. If you have questions, the <a href="https://metalsmith-slack.herokuapp.com/">Metalsmith Slack channel</a> is a good place to them (I find that <a href="https://github.com/woodyrew">woody</a> is often there is very helpful). </p>
+<p>This website itself is also built with Metalsmith. If you&#39;d like, you can poke around <a href="https://github.com/parimalsatyal/neustadt.fr-metalsmith">my Metalsmith setup on GitHub</a>.</p>
+<p>I hope this tutorial has been of help to you. If you spot errors or would like to suggest an edit, please get in touch via email (parimal-at-neustadt-dot-fr). Or feel free to <a href="https://github.com/parimalsatyal/neustadt.fr-metalsmith/blob/master/src/essays/crafting-a-simple-blog-with-metalsmith.md">submit a pull request to this article on GitHub</a> . Thanks go out to <a href="https://github.com/metalsmith/metalsmith">Metalsmith</a> and the active user/developer community for building and maintaining this beautiful static website generator. </p>
+		
+—
+		<span class="return">← <a href="../../">back home</a></span>
+	</article>
+	<p class="info">
+		<a href="../../license.txt"><img src="https://licensebuttons.net/p/zero/1.0/88x31.png" /></a><br /> <a href="https://neustadt.fr/essays/crafting-a-simple-blog-with-metalsmith/">A Beginner's Guide to Crafting a Blog with Metalsmith</a>, written by Parimal Satyal on 30 September 2016 and published on <a href="https://neustadt.fr">Neustadt.fr</a>. This guide and the included code are all in the public domain with a <a href="../../license.txt">CC0 1.0 Universal license</a>; you are free to do whatever you want with it. A link back is nice but not required. </p>
+
+		<span class="return-end">← <a href="../../">back home</a></span>
+	</div>
+</body>
+</html>
