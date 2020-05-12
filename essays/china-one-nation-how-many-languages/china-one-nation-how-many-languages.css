@@ -1,0 +1,9 @@
+html {
+	background: DarkTurquoise;
+	background-image: url("bgchinese.gif");
+	background-repeat: repeat-all;
+}
+
+article .harvard-ref {
+  color: lightslategrey;
+}
