@@ -1,7 +1,7 @@
 html {
 	font-size: 110%;
 	background: white;
-	background-image: url("../img/animspace.gif");
+	background-image: url("../img/starbackground.gif");
 	background-repeat: repeat-all;
 	/* background: white; */
 }
@@ -65,7 +65,7 @@ h2 {
 
 h3 {
 	font-size: 1.2rem;
-	margin-top: 2.2rem;
+	margin-top: 3rem;
 }
 
 h2 img {
@@ -181,6 +181,11 @@ article figcaption a:link, article figcaption a:visited, article figcaption a:ho
 	color: SlateGrey;
 }
 
+.vid {
+	display: block;
+	max-width: 100%;
+	margin: 1.5rem 0 2rem 0;
+}
 
 /* Article Table */ 
 article table  {
