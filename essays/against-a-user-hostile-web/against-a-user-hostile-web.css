@@ -1,8 +1,8 @@
 html {
 	background: white;
-	background-image: url("maggie_bg_rainbow.jpg");
+	background-image: url("bgcactus2.gif");
 	background-repeat: repeat-all;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
 }
 
 h1 {

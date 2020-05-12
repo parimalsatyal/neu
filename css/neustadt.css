@@ -2,6 +2,7 @@ html {
 	font-size: 110%;
 	background: white;
 	background-image: url("../img/animspace.gif");
+	background-repeat: repeat-all;
 	/* background: white; */
 }
 
@@ -13,16 +14,16 @@ body {
 	margin: 0.2rem;
 }
 
-body a:link, #songs a:link, #essays a:link, #activities a:link {
+body a:link {
 	color: DarkBlue;
 	font-weight: 500;
 }
 
-body a:visited, #songs a:visited, #essays a:visited, #activities a:visited  {
+body a:visited  {
 	color: indigo;
 }
 
-body a:hover, #songs a:hover, #essays a:hover, #activities a:hover  {
+body a:hover  {
 	color: blue;
 }
 
@@ -88,7 +89,7 @@ ul {
 }
 
 ul li {
-	margin: 0.8rem 1rem 0 1rem;
+	margin: 0.8rem 1rem 0 0rem;
 	padding: 0;
 }
 
@@ -104,13 +105,6 @@ ol li {
 	padding: 0;
 }
 
-ol a:link, ol a:visited, ul a:link, ul a:visited {
-	color: #222;
-} 
-
-ol a:hover, ul a:hover {
-	color: #555;
-}
 
 img.wide {
 	max-width: 100%;
