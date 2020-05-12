@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+	   <title>Parimal Satyal - Neustadt.fr</title>
+	   <description>Parimal Satyal is a designer and occasional writer living in Paris. Neustadt.fr is his personal website with his writing, music and links.</description>
+	   <link>https://neustadt.fr/</link>
+		 <copyright>Public domain under the CC0 1.0 Universal license.</copyright>
+		 <atom:link href="https://neustadt.fr/rss.xml" rel="self" type="application/rss+xml" />
+
+	   <item>
+	      <title>Against an Increasingly User-Hostile Web</title>
+				<description>We're quietly replacing an open web that connects and empowers with one that restricts and commoditizes people. We need to stop it.</description>
+	      <link>https://neustadt.fr/essays/against-a-user-hostile-web/</link>
+	      <guid>https://neustadt.fr/essays/against-a-user-hostile-web/</guid>
+	      <pubDate>Thu, 02 Nov 2017 00:00:00 +0100</pubDate>
+	    </item>
+			
+ 	   <item>
+ 	      <title>A Beginner's Guide to Crafting a Blog with Metalsmith</title>
+ 				<description>An earlier version of Neustadt.fr was built with Metalsmith, a node.js-based static site generator. In this tutorial, I show you how you can build your own Metalsmith blog from scratch.</description>
+ 	      <link>https://neustadt.fr/essays/crafting-a-simple-blog-with-metalsmith/</link>
+ 	      <guid>https://neustadt.fr/essays/crafting-a-simple-blog-with-metalsmith/</guid>
+ 	      <pubDate>Fri, 30 Sep 2016 00:00:00 +0100</pubDate>
+ 	    </item>
+			
+  	  <item>
+  	    <title>Teaching Myself German</title>
+  			<description>I had been somewhat obsessed with Germany for the past year or so but there, on a small street off Könnerlitzstraße in the backdrop of loud, bright fireworks and sekt-induced mirth, it was absolutely clear: I had to learn German.</description>
+  	    <link>https://neustadt.fr/essays/teaching-myself-german/</link>
+  	    <guid>https://neustadt.fr/essays/teaching-myself-german/</guid>
+  	    <pubDate>Mon, 07 Mar 2016 00:00:00 +0100</pubDate>
+  	   </item>
+				
+   	   <item>
+   	    <title>32c3 - Chaos Communication Congress</title>
+   			<description>Impressions and highlights from the 32nd Chaos Communication Congress, the biggest non-commercial, community-run hacker conference in the world.</description>
+   	    <link>https://neustadt.fr/essays/32c3/</link>
+   	    <guid>https://neustadt.fr/essays/32c3/</guid>
+   	    <pubDate>Wed, 06 Jan 2016 00:00:00 +0100</pubDate>
+ 	    </item>
+			
+ 	   	<item>
+ 	      <title>Physics in Metal</title>
+ 				<description>Metal bands aren't afraid to tackle serious topics in their lyrics. Here, we look at metal songs that deal with concepts in theoretical physics and cosmology.</description>
+ 	      <link>https://neustadt.fr/essays/physics-in-metal/</link>
+ 	      <guid>https://neustadt.fr/essays/physics-in-metal/</guid>
+ 	      <pubDate>Mon, 02 Nov 2015 00:00:00 +0100</pubDate>
+			</item>
+			
+  	  <item>
+  	    <title>Island (At Long Last)</title>
+  			<description>At Long Last began as a haiku but just kept on going. I'm not entirely sure where the dark overtones come from, nor the Siren theme. It's not like I often think about sea-dwelling homicidal nymphs.</description>
+  	    <link>https://neustadt.fr/essays/island-at-long-last/</link>
+  	    <guid>https://neustadt.fr/essays/island-at-long-last/</guid>
+  	    <pubDate>Wed, 15 Apr 2015 00:00:00 +0100</pubDate>
+  	   </item>
+				
+   	   <item>
+   	    <title>China: One Nation, How Many Languages?</title>
+   			<description>Description</description>
+   	    <link>https://neustadt.fr/essays/china-one-nation-how-many-languages/</link>
+   	    <guid>https://neustadt.fr/essays/china-one-nation-how-many-languages/</guid>
+   	    <pubDate>Wed, 15 Dec 2010 00:00:00 +0100</pubDate>
+ 	    </item>
+			
+ 	   	<item>
+ 	      <title>Retro Stuff</title>
+ 				<description>I grew up with the web of the 90s and early 2000s. With Geocities, FTP, Microsoft FrontPage, Netscape Navigator, CuteFTP, Winamp, Napster and personal websites. I often get nostalgic about all that. If you do too, you might enjoy this collection of things from that era.</description>
+ 	      <link>https://neustadt.fr/essays/retro-stuff/</link>
+ 	      <guid>https://neustadt.fr/essays/retro-stuff/</guid>
+ 	      <pubDate>Tue, 12 May 2020 00:00:00 +0100</pubDate>
+			</item>
+
+	</channel>
+</rss>
