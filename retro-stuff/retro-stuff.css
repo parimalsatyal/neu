@@ -17,16 +17,13 @@ ul#links li img, ul#tools li img {
 }
 
 
-#links a:link, #tools a:link {
-	color: DarkBlue;
+#links .meta a:link, #links .meta a:visited, #tools .meta a:link, #tools .meta a:visited  {
+	color: #555;
 	font-weight: 500;
 }
 
-#links a:visited, #tools a:visited {
-	color: indigo;
-}
 
-#links a:hover, #tools a:hover {
-	color: blue;
+#links .meta a:hover, #tools .meta a:hover {
+	color: #333;
 }
 

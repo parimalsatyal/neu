@@ -1,9 +1,6 @@
 html {
 	font-size: 110%;
-	background: white;
-	background-image: url("../img/animspace.gif");
-	background-repeat: repeat-all;
-	/* background: white; */
+	background: white url("../img/animspace.gif") repeat; 
 }
 
 body {
@@ -14,13 +11,9 @@ body {
 	margin: 0.2rem;
 }
 
-body a:link {
+body a:link, body a:visited {
 	color: DarkBlue;
 	font-weight: 500;
-}
-
-body a:visited  {
-	color: indigo;
 }
 
 body a:hover  {
@@ -31,7 +24,7 @@ body a:hover  {
   max-width: 630px;
   padding: 80px 7% 50px 7%;
 	background: cornsilk;
-	box-shadow: 0 0 0 5px MidnightBlue inset; */
+	box-shadow: 0 0 0 5px MidnightBlue inset;
 }
 
 header {
@@ -119,7 +112,7 @@ img.wide {
 	margin-left: -0.1rem;
 }
 
-ul#songs, ul#essays, ul#activities {
+ul#songs, ul#essays {
 	list-style-type: none;
 	margin-top: 1.5rem;
 	font-size: 1.05rem;
@@ -130,10 +123,21 @@ ul#songs li img {
 	margin-left: -1.6rem;
 }
 
-ul#essays li img, ul#activities li img {
+ul#essays li img {
 	position: absolute;
 	margin-left: -1.6rem;
 	margin-top: 0.2rem;
+}
+
+
+#essays .meta a:link, #essays .meta a:visited, #songs .meta a:link, #songs .meta a:visited  {
+	color: #555;
+	font-weight: 500;
+}
+
+
+#essays .meta a:hover, #songs .meta a:hover {
+	color: #333;
 }
 
 .meta {
@@ -148,6 +152,10 @@ ul#essays li img, ul#activities li img {
 
 .info a:link, .info a:visited, .meta a:link, .meta a:visited {
 	color: SlateGrey;
+}
+
+.info a:hover, .meta a:hover {
+	color: #333;
 }
 
 blockquote {
@@ -219,8 +227,6 @@ article table em {
 	color: grey;
 }
 
-
-
 .return-end {
 	margin-left: -1.3rem;
 }
@@ -228,6 +234,7 @@ article table em {
 ul.about-this-site {
 	list-style-type: none;
 	font-size: 0.9rem;
+	margin-top: 0rem;
 }
 
 ul.about-this-site li {
@@ -308,32 +315,4 @@ ul.about-this-site li img {
        url('../fonts/barlow-v4-latin-600.woff') format('woff'), /* Modern Browsers */
        url('../fonts/barlow-v4-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
        url('../fonts/barlow-v4-latin-600.svg#Barlow') format('svg'); /* Legacy iOS */
-}
-
-/* eb-garamond-regular - latin */
-@font-face {
-  font-family: 'EB Garamond';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/eb-garamond-v13-latin-regular.eot'); /* IE9 Compat Modes */
-  src: local(''),
-       url('../fonts/eb-garamond-v13-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/eb-garamond-v13-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/eb-garamond-v13-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/eb-garamond-v13-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/eb-garamond-v13-latin-regular.svg#EBGaramond') format('svg'); /* Legacy iOS */
-}
-
-/* eb-garamond-italic - latin */
-@font-face {
-  font-family: 'EB Garamond';
-  font-style: italic;
-  font-weight: 400;
-  src: url('../fonts/eb-garamond-v13-latin-italic.eot'); /* IE9 Compat Modes */
-  src: local(''),
-       url('../fonts/eb-garamond-v13-latin-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/eb-garamond-v13-latin-italic.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/eb-garamond-v13-latin-italic.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/eb-garamond-v13-latin-italic.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/eb-garamond-v13-latin-italic.svg#EBGaramond') format('svg'); /* Legacy iOS */
 }
