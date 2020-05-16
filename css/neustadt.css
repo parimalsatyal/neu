@@ -1,6 +1,6 @@
 html {
 	font-size: 110%;
-	background: white url("../img/animspace.gif") repeat; 
+	background: white url("../img/animspace.gif") repeat;
 }
 
 body {
@@ -35,7 +35,7 @@ header {
 .return {
 	display: block;
 	position: absolute;
-	margin-left: -1.3rem;
+	margin-left: -1.2rem;
 	color: silver;
 	top: 2.5rem;
 	font-size: 1rem;
@@ -142,7 +142,7 @@ ul#essays li img {
 
 .meta {
 	font-size: 1rem;
-	color: SlateGrey;
+	color: #5B7176;
 }
 
 .info {
@@ -193,6 +193,13 @@ article figcaption a:link, article figcaption a:visited, article figcaption a:ho
 	display: block;
 	max-width: 100%;
 	margin: 1.5rem 0 2rem 0;
+}
+
+.update {
+	font-size: 0.9rem;
+	font-style: italic;
+	color: #555;
+	line-height: 1.1rem;
 }
 
 /* Article Table */ 
