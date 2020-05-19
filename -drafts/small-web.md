@@ -15,10 +15,11 @@ This essay is my attempt to show you what the small and independent web can look
 This essay is somewhat long; you might find this table of contents handy:
 
 1. Retro Redesign
-2. Masters and Explorers, Authors and Navigators
-3. The Web as a Creative Space
-4. Highlights fro the Small Web
-5. Try it Yourself
+2. The First Webpages
+3. Masters and Explorers, Authors and Navigators
+4. The Web as a Creative Space
+5. Highlights fro the Small Web
+6. Try it Yourself
 
 ## Retro Redesign
 
@@ -66,13 +67,13 @@ The web itself was akin to a virtual manifestation of physical space, the "websp
 
 <--- Image list of Geocities neighbourhoods --- >
 
-An interesting word was very common back in the Geocities days that has since died out is the word "webmaster" (mostly gender-neutral, although sometimes declined to the feminine "webmistress"). The idea was that you created a <em>space</em> on the web, of which you were the <em>master</em> of the realm. You welcomed visitors (often with a splash screen), you guided your visitors around the different spaces (usually on the home page) and reminded them to leave a word on the guestbook on their way out (as you can on the <a href="https://users2.smartgb.com/g/g.php?a=s&i=g26-37520-60">guestbook of this website</a>). 
+An interesting word was very common back in the Geocities days that has since died out is the word "webmaster" (mostly gender-neutral, although sometimes declined to the feminine "webmistress"). The idea was that you created a <em>space</em> on the web, of which you were the <em>master</em>. You welcomed visitors (sometimes with a splash screen), you guided them around by explaining what they might find and the different spaces available to them (usually on the home page) and reminded them to leave a word on the guestbook on their way out (as you can on <a href="https://users2.smartgb.com/g/g.php?a=s&i=g26-37520-60"> my guestbook</a>). 
 
 But the semantics of the web of yore made sense in the context of how you _practically_ interacted with it. Unlike the web of today, you very rarely just came in for one specific thing and left; you usually stayed and looked around. You _browsed_.
 
-Which takes us back to the original question of how you found websites to visit. Today, "search engine optimisation" did not exist. You were lucky to show up in pre-Google search engines, but that would mean that somebody would have to be looking for that information. But not everybody who visited your website <em>did</em> know what they were looking for before.
+Which takes us back to the original question of how you found websites to visit. You were lucky if your small site showed up in pre-Google search engines, but even if it did, it would mean that somebody would have to be looking for that information. But not everybody who visited your website <em>were</em> looking for anything specific at all. They might simply have wanted to find other websites on a topic they were interested it.
 
-On way was by browsing directories, like the Geocities neighbourhoods: lists of websites often arranged by categories and sub-categories. In fact, most search engines were also directories.
+One way of doing so was by browsing directories, like the Geocities neighbourhoods: lists of websites often arranged by categories and sub-categories. In fact, most search engines were also directories.
 
 
 <—-- Image: Screenshot of search engine directory from the past> 
@@ -83,19 +84,41 @@ The other way to discover new websites was a natural consequence of one of the k
 
 This cross-linking was the main way I personally discovered my favourite websites, which I would then add to my bookmarks to be able to find them again later. In fact, the practice of cross-linking had an intersting cultural element: webrings. 
 
-Webrings were "circular" collections of websites, often around a topic or a theme. The idea was that you could go from one website to another by clicking on the "next" or "previous" buttons usually placed on the footer of each member. These have also more or less disappeared.
+Webrings were "circular" collections of websites, often around a topic or a theme. The idea was that you could go from one website to another by clicking on the "next" or "previous" buttons usually placed on the footer of each member. These have also largely disappeared.
 
 ## Small vs. Big Web
 
-Today, our relationship with the modern web is very different.
+Today, our relationship with the modern web is very different for three main reasons:
+
+### More Concentrated
+
+In the Geocities days, the web was more or less decentralized and everyone's starting point could be quite different. The downside was that if you did not somehow came across a website through the course of your navigation (through a link on someone's website, for example), you could possibly never see it at all. Over time, search engines made it easier for people to look up information, but there still wasn't a singular point of entry. Search engines also worked somewhat differently back in the day, and you were more likely to look for _websites_ instead of individual pages or very specific information.
+
+Today, most of the time spent on the web is either _on_ a small number of very dominant platforms like Facebook, Twitter and LinkedIn, or mediated _through_ them. There is so much "content" that is constantly pushed at you as a user that very few of us actually venture out to browse like in the old days. And since these platforms themselves thrive on "user engagement"—likes, comments and shares—their algorithms are more likely to give visibility to content that evokes this behavior. I suspect this is one of the reasons that controversial/"alternative" facts get so much attention; outcry and controversy are profitable for platforms that make money off of their users' attention.
+
+When you're not _receiving_ information passively, and instead actually actively looking for information, most people still have a singular point of entry. Google has become the de facto gatekeeper of the web, an arbiter of what is useful and not. Except, most websites that appear on the first few pages are actively designed to be there, thanks to "SEO", or search engine optimisation. To want visibility and optimise for it is natural, of course, especially if you are a company or a marketer for whom that audience is very important. One consequence of this though is that most of these websites are created by professionals and companies, not from your average person wanting to share their thoughts and ideas.
+
+Not only is Google largely a _monopology_— other search engines like Bing, DuckDuckGo and Qwant are becoming more popular but are still far behind in adoption—it is also a major ad platform using this position and power to actively push its vision of the web.
+
+And this web is quite different from the "small web" crafted by regular people. Google's web has a different set of values and vocabulary that come with it: engagement, conversion, metrics and optimisation. 
+
+
+### More Commercial, marketing channel
+
+There has always been a place for the commercial web. Amazon was already selling books online back in <YEAR>, Flower123 did the same for flowers, sd for pets. And it is only natural; the web is for everyone and e-commerce brought even more value to the web. 
+	
+But today's web is _mostly_ commercial. Since most people get to information through Google, and you can "optimise" your website 
+
+> Traffic %: giants. Long tail.
+> Mostly created by professionals or companies
+> Search and push, vs browse and “surf”
+> Engagement, do everything to engage you and try to retain you. Not make you discover other parts of the web.
+
+### More Closed, Sanitized
 
 > Fewer "create" and more consume
 > Less personal, more commercial or professional content
-> Mostly created by professionals or companies
-> Traffic %: giants. Long tail.
-> Search and push, vs browse and “surf”
-> Engagement, do everything to engage you and try to retain you. Not make you discover other parts of the web.
-> "Conversion"
+> "Conversion", it's a marketing channel
 
 Segue with the difference, "product" vs. "art".
 
@@ -113,9 +136,13 @@ The modern web is mostly product. Most sd
 
 A list of really cool websites either from the past (Restorativland and Internet Archive), or present (Neocities and Wiby).
 
+
+
 ## Your Own Corner of the Web
 
-In fact, if you wanted to create your own own little corner of the web and have fun doing so, there’s nothing stopping you. 
+So the small web still exists, and is still giving us all kinds of websites to browse through and discover. 
+
+But reading is just half the fun. The best part about the web is being able to put things on it. Not on closed platforms, social media mediated by ad companies, or on a discussion forum, but simply in your own little corner of the web. It's the best way to see how simple and open the web really is.
 
 All you would need is to learn basic HTML and CSS, set up a site for free at Neocities.org and start playing. If you have zero experience, It might take you a while to get a hang of how to change text sizes, colours, link between pages and add images, but I think that’s part of the fun. It’s like learning how to paint, or sculpt — once you create your first piece, you’ll see how great if feels to have made from scratch and put it up on the web for the world to see.
 

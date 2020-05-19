@@ -1,0 +1,24 @@
+# Website Update Checklist
+
+## For minor updates
+
+For minor corrections like CSS adjustments, GIF optimisation, minor typos — things that do not directly change _le fond_ of the pages modified,
+
+[ ] Do nothing
+
+## For small but important updates
+
+For small updates, corrections or additions (to the Retro page, for example), 
+
+[ ] Update "Last Updated" on Index 
+[ ] And/or Retro page if relevant
+[ ] Add a "last updated" date on the relevant page. 
+[ ] Update rss.xml with new last modified date
+
+## For new pages
+
+For new essays or pages, 
+
+[ ] Update "Last Updated" on Index 
+[ ] And/or Retro page if relevant
+[ ] Add new item to RSS.xml
