@@ -1,12 +1,12 @@
 # Neustadt.fr
 
-This is the entire Neustadt.fr website hosted on Neocities, accessible at :
+This is the entire Neustadt.fr website hosted on [Neocities](https://neocities.org), accessible at :
 
 - https://neustadt.fr and
 - https://neustadt.neocities.org/
 
-Everything is hand-coded like I used to late 90s and early 2000s (even the RSS feed).
-No CMS, no template and no theme. Just pure HTML and CSS. 
+Everything is hand-coded like I used to late 90s and early 2000s (right down to the RSS feed).
+No CMS, no templates and no themes. Just pure HTML and CSS. 
 
 Most animated GIFs are things I've found, mostly on Archive.org's [Gifcities.org](https://gifcities.org/) service. 
 
