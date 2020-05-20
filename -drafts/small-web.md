@@ -142,9 +142,11 @@ A list of really cool websites either from the past (Restorativland and Internet
 
 So the small web still exists, and is still giving us all kinds of websites to browse through and discover. 
 
-But reading is just half the fun. The best part about the web is being able to put things on it. Not on closed platforms, social media mediated by ad companies, or on a discussion forum, but simply in your own little corner of the web. It's the best way to see how simple and open the web really is.
+As fun as it is to browse the small web and discover new websites, the best part is really to make your own website and join in. Not on closed platforms, social media mediated by ad companies, or on a discussion forum, but simply in your own little corner of the web. It's the best way to see how simple and open the web really is.
 
 All you would need is to learn basic HTML and CSS, set up a site for free at Neocities.org and start playing. If you have zero experience, It might take you a while to get a hang of how to change text sizes, colours, link between pages and add images, but I think that’s part of the fun. It’s like learning how to paint, or sculpt — once you create your first piece, you’ll see how great if feels to have made from scratch and put it up on the web for the world to see.
+
+Sure, if you've never coded before, it might seem daunting. But really, you only need the basics to get started. There are services out there that let you create a site without knowing HTML and CSS, but that's if you _need_ a site. Learning basic HTML and CSS is like learning to paint; sure you can commission or buy a painting, but it's not the same thing as learning to paint.
 
 You can always view the source of any public website to take inspiration and learn. Make sure you pick simple, basic ones; the modern web is full of bloated websites that make HTML unreadable.  This website, for example, only uses basic HTML and CSS and I invite you to play with the code to your heart’s extent. It’s all in the public domain, so you can even copy all of it and modify it (and you don’t have to credit me or even link back, it’s all free). 
 
