@@ -1,0 +1,9 @@
+html {
+	background: black;
+	background-image: url("../../resc/bgstripes3.gif");
+	background-repeat: repeat-all;
+}
+
+video {
+	max-width: 100%;
+}
