@@ -3,3 +3,7 @@ html {
 	background-image: url("smallwebbg2.gif");
 	background-repeat: repeat-all;
 }
+
+img.external-link {
+	margin-bottom: -0.3rem;
+}
