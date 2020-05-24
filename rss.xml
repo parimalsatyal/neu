@@ -8,6 +8,14 @@
 		 <atom:link href="https://neustadt.fr/rss.xml" rel="self" type="application/rss+xml" />
 
 	   <item>
+	      <title>In Defence of The Small Web</title>
+				<description>Most websites today are built like commercial products by professionals and marketers, optimised to draw the largest audience, generate engagement and 'convert'. But there is also a smaller, less-visible web designed by regular people to simply to share their interests and hobbies with the world. A web that is unpolished, often quirky but also creative and informative.</description>
+	      <link>https://neustadt.fr/essays/the-small-web/</link>
+	      <guid>https://neustadt.fr/essays/the-small-web/</guid>
+	      <pubDate>Thu, 24 May 2020 00:00:00 +0100</pubDate>
+	    </item>
+
+	   <item>
 	      <title>Against an Increasingly User-Hostile Web</title>
 				<description>We're quietly replacing an open web that connects and empowers with one that restricts and commoditizes people. We need to stop it.</description>
 	      <link>https://neustadt.fr/essays/against-a-user-hostile-web/</link>
