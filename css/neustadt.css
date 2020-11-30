@@ -112,7 +112,7 @@ img.wide {
 	margin-left: -0.1rem;
 }
 
-ul#songs, ul#essays {
+ul#songs, ul#essays, ul#talks {
 	list-style-type: none;
 	margin-top: 1.5rem;
 	font-size: 1.05rem;
@@ -123,7 +123,7 @@ ul#songs li img {
 	margin-left: -1.6rem;
 }
 
-ul#essays li img {
+ul#essays li img, ul#talks li img {
 	position: absolute;
 	margin-left: -1.6rem;
 	margin-top: 0.2rem;
