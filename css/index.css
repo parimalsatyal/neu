@@ -1,0 +1,32 @@
+html {
+	font-size: 110%;
+	background: black url("../img/animspace.gif") repeat;
+}
+
+body {
+	color: MidnightBlue;
+	background: white url("../img/animspace.gif") repeat;
+	min-height: 100%; min-height: 100vh;
+	font-family: 'Barlow', serif;
+	font-size: 1.05rem;
+}
+
+body a:link, body a:visited {
+	color: DarkBlue;
+	font-weight: 500;
+}
+
+body a:hover  {
+	color: blue;
+}
+
+#wrapper {
+	max-width: 680px;
+	margin: auto;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	padding: 80px 7% 50px 7%;
+	box-shadow: none;
+	box-shadow: 0 0 0 5px MidnightBlue inset;
+ 	background-color: SeaShell;
+}

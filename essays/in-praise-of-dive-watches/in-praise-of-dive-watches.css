@@ -1,0 +1,29 @@
+html {
+	font-size: 110%;
+	box-shadow: inset 0 10px MidnightBlue inset;
+	background: MidnightBlue;
+}
+
+body {
+	background-color: SeaShell;
+	color: MidnightBlue;
+	min-height: 100%; min-height: 100vh;
+	font-family: 'Barlow', serif;
+	font-size: 1.05rem;
+}
+
+body a:link, body a:visited {
+	color: DarkBlue;
+	font-weight: 500;
+}
+
+body a:hover  {
+	color: blue;
+}
+
+#wrapper {
+  max-width: 680px;
+  margin: auto;
+  box-shadow: none;
+  background-color: SeaShell;
+}

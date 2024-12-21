@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://neustadt.fr/</loc>
-		<lastmod>2020-06-03</lastmod>
+		<lastmod>2023-11-12</lastmod>
 	</url>
 	<url>
 		<loc>https://neustadt.fr/retro-stuff/</loc>
@@ -11,6 +11,10 @@
 	<url>
 		<loc>https://neustadt.fr/essays/the-small-web/</loc>
 		<lastmod>2020-06-03</lastmod>
+	</url>
+	<url>
+		<loc>https://neustadt.fr/essays/in-praise-of-dive-watches/</loc>
+		<lastmod>2024-08-23</lastmod>
 	</url>
 	<url>
 		<loc>https://neustadt.fr/essays/against-a-user-hostile-web/</loc>

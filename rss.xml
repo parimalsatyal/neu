@@ -2,17 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 	   <title>Parimal Satyal - Neustadt.fr</title>
-	   <description>Parimal Satyal is a designer and occasional writer interested in aviation, cultural exchange, languages, science, computers, the open web and the European Union. Neustadt.fr is his personal website with his writing, music and links.</description>
+	   <description>Parimal Félix Satyal is a designer and occasional writer interested in aviation, cultural exchange, languages, science, computers, the open web and the European Union. Neustadt.fr is his personal website with his writing, music and links.</description>
 	   <link>https://neustadt.fr/</link>
 		 <copyright>Public domain under the CC0 1.0 Universal license.</copyright>
+		 <lastBuildDate>Sun, 12 Nov 2023 20:50:00 CET</lastBuildDate>
 		 <atom:link href="https://neustadt.fr/rss.xml" rel="self" type="application/rss+xml" />
 
+	<item>
+	   <title>In Praise of Dive Watches</title>
+			<description>A dive watch might seem an odd thing to write an eloge to, especially by someone who barely spends any time in water. However, I think the features that made dive watches great for suba diving in the 60s and the 70s are exactly those that make them particularly versatile and useful in everyday life today. </description>
+	   <link>https://neustadt.fr/essays/in-praise-of-dive-watches/</link>
+	   <guid>https://neustadt.fr/essays/in-praise-of-dive-watches/</guid>
+	   <pubDate>23 August 2024 00:00:00 +0100</pubDate>
+	 </item>
+	 
 	   <item>
 	      <title>Rediscovering the Small Web</title>
 				<description>Most websites today are built like commercial products by professionals and marketers, optimised to draw the largest audience, generate engagement and 'convert'. But there is also a smaller, less-visible web designed by regular people to simply to share their interests and hobbies with the world. A web that is unpolished, often quirky but also creative and informative.</description>
 	      <link>https://neustadt.fr/essays/the-small-web/</link>
 	      <guid>https://neustadt.fr/essays/the-small-web/</guid>
-	      <pubDate>Thu, 25 May 2020 00:00:00 +0100</pubDate>
+	      <pubDate>25 May 2020 00:00:00 +0100</pubDate>
 	    </item>
 
 	   <item>
@@ -20,7 +29,7 @@
 				<description>We're quietly replacing an open web that connects and empowers with one that restricts and commoditizes people. We need to stop it.</description>
 	      <link>https://neustadt.fr/essays/against-a-user-hostile-web/</link>
 	      <guid>https://neustadt.fr/essays/against-a-user-hostile-web/</guid>
-	      <pubDate>Thu, 02 Nov 2017 00:00:00 +0100</pubDate>
+	      <pubDate>Thu, 02 Nov 2017 00:00:00 EST</pubDate>
 	    </item>
 			
  	   <item>
