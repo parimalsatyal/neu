@@ -152,19 +152,19 @@ p strong {
 font-family: 'Nordica Plus NordicaClassicLight';
 font-style: normal;
 font-weight: normal;
-src: local('burnover/nordica-plus/Nordica Plus NordicaClassicLight'), url('burnover/nordica-plus/NordicaClassicLight.woff') format('woff');
+src: local('Nordica Plus NordicaClassicLight'), url('burnover/nordica-plus/NordicaClassicLight.woff') format('woff');
 }
 
 @font-face {
 font-family: 'Nordica Plus NordicaClassicBkExtOl';
 font-style: normal;
 font-weight: normal;
-src: local('burnover/nordica-plus/Nordica Plus NordicaClassicBkExtOl'), url('burnover/nordica-plus/NordicaClassicBkExtOl.woff') format('woff');
+src: local('Nordica Plus NordicaClassicBkExtOl'), url('burnover/nordica-plus/NordicaClassicBkExtOl.woff') format('woff');
 }
 
 @font-face {
 font-family: 'Nordica Plus NordicaClassicRgExt';
 font-style: normal;
 font-weight: normal;
-src: local('burnover/nordica-plus/Nordica Plus NordicaClassicRgExt'), url('burnover/nordica-plus/NordicaClassicRgExt.woff') format('woff');
+src: local('Nordica Plus NordicaClassicRgExt'), url('burnover/nordica-plus/NordicaClassicRgExt.woff') format('woff');
 }
