@@ -1,0 +1,183 @@
+html {
+	font-size: 110%;
+	background: none;
+}
+
+body {
+	background-color: #03031c;
+	background-image: url(Burnover-header-gradient-dark.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	color: #f2e4d4;
+	min-height: 100%; min-height: 100vh;
+	font-size: 1.1rem;
+}
+
+body a:link, body a:visited {
+	color: salmon;
+	font-weight: 500;
+}
+
+body a:hover  {
+	color: #ff2e29;
+}
+
+#wrapper {
+  max-width: 680px;
+  margin: auto;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.imgcenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+	font-family:'Nordica Plus NordicaClassicBkExtOl';
+	font-weight:normal;
+	margin-top: 4rem;
+	font-size: 1.5em;
+	color: #fae800;
+	text-align: center;
+ 	text-shadow:
+      0 0 7px #fff,
+      0 0 10px #000,
+      0 0 21px #fae800,
+      0 0 42px #fae800,
+	  0 0 52px #fae800,
+      0 0 82px #fae800,
+      0 0 92px #0fa,
+      0 0 102px #fae800,
+      0 0 151px #fae800;
+}
+
+p {
+	font-family: 'Barlow', serif;	
+	font-weight:normal;
+	font-size: 1.2rem;
+	color: #ffbc70;
+	text-shadow: 1px 2px 3px rgba(78, 7, 7, 1);
+ 	text-shadow:
+      0 0 7px #000,
+      0 0 10px #000,
+      0 0 42px rgba(78, 7, 7, 1),
+      0 0 102px rgba(78, 7, 7, 1),
+      0 0 151px rgba(78, 7, 7, 1);
+	
+}
+
+p.lede {
+	font-family:'Nordica Plus NordicaClassicLight';
+	font-size: 1rem;
+}
+
+p.subtext {
+	display: block;
+	width: 50%;
+	min-width: 340px;
+	margin: auto;
+	font-size: 1rem;
+	text-align: center;
+}
+
+p.longtext {
+	display: block;
+	margin: auto;
+	font-size: 1rem;
+	margin-top: 0.4rem;
+	margin-bottom: 0.4rem;
+	text-align: left;
+}
+
+p strong {
+	font-weight: bold;
+}
+
+#streaming-options {
+	width: 100%;
+	text-align: center;
+}
+
+#streaming-options img {
+	width: 160px;
+	margin-left: 0.4rem;
+}
+
+#streaming-options img:hover {
+	opacity: 80%;
+}
+
+#download-options {
+	width: 100%;
+	text-align: center;
+	margin: auto;
+	margin-top: 1.5rem;
+	margin-bottom: 8em;
+}
+
+#download-options a {
+	float: left;
+	text-align: center;
+	min-height: 6em;
+	display: block;
+	width: 160px;
+	margin-left: 0.4rem;
+	font-size: 0.8rem;
+	text-decoration: none;
+}
+
+#download-options span {
+	display: block;
+	font-family:'Nordica Plus NordicaClassicRgExt';
+	font-weight:normal;
+	font-size: 1.2rem;
+	color: #0eF7ff;
+	text-decoration: none;
+ 	text-shadow:
+      0 0 7px #000,
+      0 0 10px #0EF7FF,
+      0 0 21px #000,
+      0 0 42px #0EF7FF,
+      0 0 82px #000,
+      0 0 92px #0EF7FF,
+      0 0 102px #0EF7FF,
+      0 0 151px #0EF7FF;
+}
+
+#download-options span:hover {
+ 	text-shadow:
+      0 0 7px #000,
+      0 0 10px #0EF7FF,
+      0 0 21px #0EF7FF,
+      0 0 42px #0EF7FF,
+      0 0 82px #0EF7FF,
+      0 0 92px #0EF7FF,
+      0 0 102px #0EF7FF,
+      0 0 151px #0EF7FF;
+}
+
+
+@font-face {
+font-family: 'Nordica Plus NordicaClassicLight';
+font-style: normal;
+font-weight: normal;
+src: local('Nordica Plus NordicaClassicLight'), url('nordica-plus/NordicaClassicLight.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Nordica Plus NordicaClassicBkExtOl';
+font-style: normal;
+font-weight: normal;
+src: local('Nordica Plus NordicaClassicBkExtOl'), url('nordica-plus/NordicaClassicBkExtOl.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Nordica Plus NordicaClassicRgExt';
+font-style: normal;
+font-weight: normal;
+src: local('Nordica Plus NordicaClassicRgExt'), url('nordica-plus/NordicaClassicRgExt.woff') format('woff');
+}

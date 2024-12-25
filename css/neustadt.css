@@ -133,12 +133,6 @@ ul#essays li img, ul#presentations li img {
 	margin-top: 0.2rem;
 }
 
-ul#albums li img {
-	margin-left: -1.6rem;
-	margin-right: 1rem;
-	margin-top: 0.2rem;
-	float: left;
-}
 
 #essays .meta a:link, #essays .meta a:visited, #songs .meta a:link, #songs .meta a:visited  {
 	color: #555;
@@ -153,12 +147,6 @@ ul#albums li img {
 .meta {
 	font-size: 1rem;
 	color: #5B7176;
-}
-
-
-ul#albums li {
-	margin-bottom: 2rem ;
-	clear: both;
 }
 
 .info {

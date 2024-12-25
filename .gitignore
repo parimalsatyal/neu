@@ -1,3 +1,6 @@
 # Ignore MacOS hidden fiels
 .DS_Store
 
+snow-circuit/burnover/SnowCircuit-Burnover-flac.zip
+snow-circuit/burnover/SnowCircuit-Burnover-aiff.zip
+snow-circuit/burnover/SnowCircuit-Burnover-wav.zip
