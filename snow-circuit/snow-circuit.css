@@ -36,6 +36,12 @@ body a:hover  {
     margin-right: auto;
 }
 
+img.snowcircuitlogo {
+	width: 50%;
+	min-width: 300px;
+	margin-top: 2rem;
+}
+
 img.latest {
 	margin-top: 1rem;
 }

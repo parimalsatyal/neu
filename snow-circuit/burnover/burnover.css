@@ -36,6 +36,17 @@ body a:hover  {
     margin-right: auto;
 }
 
+img.snowcircuitlogo {
+	width: 50%;
+	min-width: 300px;
+	margin-top: 2rem;
+}
+
+img.burnoverlogo {
+	width: 60%;
+	min-width: 220px;
+}
+
 h2 {
 	font-family:'Nordica Plus NordicaClassicBkExtOl';
 	font-weight:normal;
